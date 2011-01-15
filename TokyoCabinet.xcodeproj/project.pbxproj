@@ -1,0 +1,576 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		1CADD73712E04CD600E9CB02 /* TokyoCabinet.framework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 1CADD73A12E04CD700E9CB02 /* Build configuration list for PBXAggregateTarget "TokyoCabinet.framework" */;
+			buildPhases = (
+				1CADD73612E04CD600E9CB02 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = TokyoCabinet.framework;
+			productName = TokyoCabinet.framework;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		1CADD7D112E0530200E9CB02 /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = 1CADD7C712E0530200E9CB02 /* md5.c */; };
+		1CADD7D212E0530200E9CB02 /* md5.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CADD7C812E0530200E9CB02 /* md5.h */; };
+		1CADD7D312E0530200E9CB02 /* myconf.c in Sources */ = {isa = PBXBuildFile; fileRef = 1CADD7C912E0530200E9CB02 /* myconf.c */; };
+		1CADD7D412E0530200E9CB02 /* myconf.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CADD7CA12E0530200E9CB02 /* myconf.h */; };
+		1CADD7D512E0530200E9CB02 /* tcadb.c in Sources */ = {isa = PBXBuildFile; fileRef = 1CADD7CB12E0530200E9CB02 /* tcadb.c */; };
+		1CADD7D612E0530200E9CB02 /* tcbdb.c in Sources */ = {isa = PBXBuildFile; fileRef = 1CADD7CC12E0530200E9CB02 /* tcbdb.c */; };
+		1CADD7D712E0530200E9CB02 /* tcfdb.c in Sources */ = {isa = PBXBuildFile; fileRef = 1CADD7CD12E0530200E9CB02 /* tcfdb.c */; };
+		1CADD7D812E0530200E9CB02 /* tchdb.c in Sources */ = {isa = PBXBuildFile; fileRef = 1CADD7CE12E0530200E9CB02 /* tchdb.c */; };
+		1CADD7D912E0530200E9CB02 /* tctdb.c in Sources */ = {isa = PBXBuildFile; fileRef = 1CADD7CF12E0530200E9CB02 /* tctdb.c */; };
+		1CADD7DA12E0530200E9CB02 /* tcutil.c in Sources */ = {isa = PBXBuildFile; fileRef = 1CADD7D012E0530200E9CB02 /* tcutil.c */; };
+		1CADD82612E0749500E9CB02 /* TokyoCabinet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CADD82512E0749500E9CB02 /* TokyoCabinet.framework */; };
+		1CADD83412E074DD00E9CB02 /* GHUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CADD83312E074DD00E9CB02 /* GHUnit.framework */; };
+		1CADD83612E0750500E9CB02 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CADD83512E0750500E9CB02 /* CoreGraphics.framework */; };
+		1CADD83712E0750E00E9CB02 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		1CADD83912E0751C00E9CB02 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CADD83812E0751C00E9CB02 /* UIKit.framework */; };
+		1CADD83E12E078BE00E9CB02 /* TableDBTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CADD83D12E078BE00E9CB02 /* TableDBTest.m */; };
+		1CADD84412E0794600E9CB02 /* GHUnitIOSTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CADD84312E0794600E9CB02 /* GHUnitIOSTestMain.m */; };
+		1CADD8CB12E07FF000E9CB02 /* tcadb.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CADD8C512E07FF000E9CB02 /* tcadb.h */; };
+		1CADD8CC12E07FF000E9CB02 /* tcbdb.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CADD8C612E07FF000E9CB02 /* tcbdb.h */; };
+		1CADD8CD12E07FF000E9CB02 /* tcfdb.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CADD8C712E07FF000E9CB02 /* tcfdb.h */; };
+		1CADD8CE12E07FF000E9CB02 /* tchdb.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CADD8C812E07FF000E9CB02 /* tchdb.h */; };
+		1CADD8CF12E07FF000E9CB02 /* tctdb.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CADD8C912E07FF000E9CB02 /* tctdb.h */; };
+		1CADD8D012E07FF000E9CB02 /* tcutil.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CADD8CA12E07FF000E9CB02 /* tcutil.h */; };
+		AA747D9F0F9514B9006C5449 /* TokyoCabinet_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* TokyoCabinet_Prefix.pch */; };
+		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1CADD94112E17AA100E9CB02 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1CADD73712E04CD600E9CB02 /* TokyoCabinet.framework */;
+			remoteInfo = TokyoCabinet.framework;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1CADD73312E04C3E00E9CB02 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1CADD7C712E0530200E9CB02 /* md5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = md5.c; sourceTree = "<group>"; };
+		1CADD7C812E0530200E9CB02 /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
+		1CADD7C912E0530200E9CB02 /* myconf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = myconf.c; sourceTree = "<group>"; };
+		1CADD7CA12E0530200E9CB02 /* myconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myconf.h; sourceTree = "<group>"; };
+		1CADD7CB12E0530200E9CB02 /* tcadb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tcadb.c; sourceTree = "<group>"; };
+		1CADD7CC12E0530200E9CB02 /* tcbdb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tcbdb.c; sourceTree = "<group>"; };
+		1CADD7CD12E0530200E9CB02 /* tcfdb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tcfdb.c; sourceTree = "<group>"; };
+		1CADD7CE12E0530200E9CB02 /* tchdb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tchdb.c; sourceTree = "<group>"; };
+		1CADD7CF12E0530200E9CB02 /* tctdb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tctdb.c; sourceTree = "<group>"; };
+		1CADD7D012E0530200E9CB02 /* tcutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tcutil.c; sourceTree = "<group>"; };
+		1CADD81B12E0742E00E9CB02 /* Tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tests.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1CADD81D12E0742E00E9CB02 /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
+		1CADD82512E0749500E9CB02 /* TokyoCabinet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TokyoCabinet.framework; path = "build/Debug-framework/TokyoCabinet.framework"; sourceTree = "<group>"; };
+		1CADD83312E074DD00E9CB02 /* GHUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GHUnit.framework; sourceTree = "<group>"; };
+		1CADD83512E0750500E9CB02 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1CADD83812E0751C00E9CB02 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1CADD83D12E078BE00E9CB02 /* TableDBTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableDBTest.m; sourceTree = "<group>"; };
+		1CADD84312E0794600E9CB02 /* GHUnitIOSTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIOSTestMain.m; sourceTree = "<group>"; };
+		1CADD8AB12E07ACA00E9CB02 /* Tests_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tests_Prefix.pch; sourceTree = "<group>"; };
+		1CADD8C512E07FF000E9CB02 /* tcadb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tcadb.h; sourceTree = "<group>"; };
+		1CADD8C612E07FF000E9CB02 /* tcbdb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tcbdb.h; sourceTree = "<group>"; };
+		1CADD8C712E07FF000E9CB02 /* tcfdb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tcfdb.h; sourceTree = "<group>"; };
+		1CADD8C812E07FF000E9CB02 /* tchdb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tchdb.h; sourceTree = "<group>"; };
+		1CADD8C912E07FF000E9CB02 /* tctdb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tctdb.h; sourceTree = "<group>"; };
+		1CADD8CA12E07FF000E9CB02 /* tcutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tcutil.h; sourceTree = "<group>"; };
+		AA747D9E0F9514B9006C5449 /* TokyoCabinet_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokyoCabinet_Prefix.pch; sourceTree = SOURCE_ROOT; };
+		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D2AAC07E0554694100DB518D /* libTokyoCabinet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTokyoCabinet.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1CADD81912E0742E00E9CB02 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1CADD82612E0749500E9CB02 /* TokyoCabinet.framework in Frameworks */,
+				1CADD83412E074DD00E9CB02 /* GHUnit.framework in Frameworks */,
+				1CADD83612E0750500E9CB02 /* CoreGraphics.framework in Frameworks */,
+				1CADD83712E0750E00E9CB02 /* Foundation.framework in Frameworks */,
+				1CADD83912E0751C00E9CB02 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2AAC07C0554694100DB518D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		034768DFFF38A50411DB9C8B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2AAC07E0554694100DB518D /* libTokyoCabinet.a */,
+				1CADD81B12E0742E00E9CB02 /* Tests.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0867D691FE84028FC02AAC07 /* TokyoCabinet */ = {
+			isa = PBXGroup;
+			children = (
+				1CADD83C12E078A600E9CB02 /* Tests */,
+				1CADD72F12E04C2800E9CB02 /* Headers */,
+				1CADD79A12E0527D00E9CB02 /* Sources */,
+				1CADD72E12E04C2100E9CB02 /* Resources */,
+				32C88DFF0371C24200C91783 /* Other Sources */,
+				0867D69AFE84028FC02AAC07 /* Frameworks */,
+				034768DFFF38A50411DB9C8B /* Products */,
+				1CADD81D12E0742E00E9CB02 /* Tests-Info.plist */,
+			);
+			name = TokyoCabinet;
+			sourceTree = "<group>";
+		};
+		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1CADD83512E0750500E9CB02 /* CoreGraphics.framework */,
+				1CADD83812E0751C00E9CB02 /* UIKit.framework */,
+				1CADD82512E0749500E9CB02 /* TokyoCabinet.framework */,
+				1CADD83312E074DD00E9CB02 /* GHUnit.framework */,
+				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1CADD72E12E04C2100E9CB02 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1CADD73312E04C3E00E9CB02 /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		1CADD72F12E04C2800E9CB02 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				1CADD8C512E07FF000E9CB02 /* tcadb.h */,
+				1CADD8C612E07FF000E9CB02 /* tcbdb.h */,
+				1CADD8C712E07FF000E9CB02 /* tcfdb.h */,
+				1CADD8C812E07FF000E9CB02 /* tchdb.h */,
+				1CADD8C912E07FF000E9CB02 /* tctdb.h */,
+				1CADD8CA12E07FF000E9CB02 /* tcutil.h */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		1CADD79A12E0527D00E9CB02 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				1CADD7C712E0530200E9CB02 /* md5.c */,
+				1CADD7C812E0530200E9CB02 /* md5.h */,
+				1CADD7C912E0530200E9CB02 /* myconf.c */,
+				1CADD7CA12E0530200E9CB02 /* myconf.h */,
+				1CADD7CB12E0530200E9CB02 /* tcadb.c */,
+				1CADD7CC12E0530200E9CB02 /* tcbdb.c */,
+				1CADD7CD12E0530200E9CB02 /* tcfdb.c */,
+				1CADD7CE12E0530200E9CB02 /* tchdb.c */,
+				1CADD7CF12E0530200E9CB02 /* tctdb.c */,
+				1CADD7D012E0530200E9CB02 /* tcutil.c */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		1CADD83C12E078A600E9CB02 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				1CADD84312E0794600E9CB02 /* GHUnitIOSTestMain.m */,
+				1CADD83D12E078BE00E9CB02 /* TableDBTest.m */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		32C88DFF0371C24200C91783 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				1CADD8AB12E07ACA00E9CB02 /* Tests_Prefix.pch */,
+				AA747D9E0F9514B9006C5449 /* TokyoCabinet_Prefix.pch */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D2AAC07A0554694100DB518D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA747D9F0F9514B9006C5449 /* TokyoCabinet_Prefix.pch in Headers */,
+				1CADD7D212E0530200E9CB02 /* md5.h in Headers */,
+				1CADD7D412E0530200E9CB02 /* myconf.h in Headers */,
+				1CADD8CB12E07FF000E9CB02 /* tcadb.h in Headers */,
+				1CADD8CC12E07FF000E9CB02 /* tcbdb.h in Headers */,
+				1CADD8CD12E07FF000E9CB02 /* tcfdb.h in Headers */,
+				1CADD8CE12E07FF000E9CB02 /* tchdb.h in Headers */,
+				1CADD8CF12E07FF000E9CB02 /* tctdb.h in Headers */,
+				1CADD8D012E07FF000E9CB02 /* tcutil.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		1CADD81A12E0742E00E9CB02 /* Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1CADD82012E0742F00E9CB02 /* Build configuration list for PBXNativeTarget "Tests" */;
+			buildPhases = (
+				1CADD81712E0742E00E9CB02 /* Resources */,
+				1CADD81812E0742E00E9CB02 /* Sources */,
+				1CADD81912E0742E00E9CB02 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1CADD94212E17AA100E9CB02 /* PBXTargetDependency */,
+			);
+			name = Tests;
+			productName = Tests;
+			productReference = 1CADD81B12E0742E00E9CB02 /* Tests.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D2AAC07D0554694100DB518D /* TokyoCabinet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "TokyoCabinet" */;
+			buildPhases = (
+				D2AAC07A0554694100DB518D /* Headers */,
+				D2AAC07B0554694100DB518D /* Sources */,
+				D2AAC07C0554694100DB518D /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TokyoCabinet;
+			productName = TokyoCabinet;
+			productReference = D2AAC07E0554694100DB518D /* libTokyoCabinet.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0867D690FE84028FC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "TokyoCabinet" */;
+			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 0867D691FE84028FC02AAC07 /* TokyoCabinet */;
+			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D2AAC07D0554694100DB518D /* TokyoCabinet */,
+				1CADD73712E04CD600E9CB02 /* TokyoCabinet.framework */,
+				1CADD81A12E0742E00E9CB02 /* Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1CADD81712E0742E00E9CB02 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1CADD73612E04CD600E9CB02 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#--------------------------------------------------------------------\necho \"[0] Framework: Preparing ...\"\n#--------------------------------------------------------------------\nFRAMEWORK_NAME=$(/usr/libexec/PlistBuddy -c \"Print CFBundleName\" Info.plist)\nBUILD_TARGET_NAME=$FRAMEWORK_NAME\nFRAMEWORK_VERSION_NUMBER=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" Info.plist)\nFRAMEWORK_VERSION=A\nFRAMEWORK_BUILD_PATH=\"build/${BUILD_STYLE}-framework\"\nFRAMEWORK_DIR=\"${FRAMEWORK_BUILD_PATH}/${FRAMEWORK_NAME}.framework\"\nPACKAGENAME=\"${FRAMEWORK_NAME}.${FRAMEWORK_VERSION_NUMBER}.zip\"\n\n#--------------------------------------------------------------------\necho \"[1] Framework: Building libraries ...\"\n#--------------------------------------------------------------------\nxcodebuild -configuration ${BUILD_STYLE} -target ${BUILD_TARGET_NAME} clean\nxcodebuild -configuration ${BUILD_STYLE} -target ${BUILD_TARGET_NAME} \\\n  -sdk iphonesimulator${IPHONEOS_DEPLOYMENT_TARGET}\n[ $? != 0 ] && exit 1\n\nxcodebuild -configuration ${BUILD_STYLE} -target ${BUILD_TARGET_NAME} \\\n  -sdk iphoneos${IPHONEOS_DEPLOYMENT_TARGET}\n[ $? != 0 ] && exit 1\n\necho \"Framework: Cleaning framework...\"\n[ -d \"${FRAMEWORK_BUILD_PATH}\" ] && rm -rf \"${FRAMEWORK_BUILD_PATH}\"\n\n#--------------------------------------------------------------------\necho \"[2] Framework: Setting up directories...\"\n#--------------------------------------------------------------------\nmkdir -p ${FRAMEWORK_DIR}\nmkdir -p ${FRAMEWORK_DIR}/Versions\nmkdir -p ${FRAMEWORK_DIR}/Versions/${FRAMEWORK_VERSION}\nmkdir -p ${FRAMEWORK_DIR}/Versions/${FRAMEWORK_VERSION}/Resources\nmkdir -p ${FRAMEWORK_DIR}/Versions/${FRAMEWORK_VERSION}/Headers\n\n#--------------------------------------------------------------------\necho \"[3] Framework: Creating symlinks...\"\n#--------------------------------------------------------------------\nln -s ${FRAMEWORK_VERSION} ${FRAMEWORK_DIR}/Versions/Current\nln -s Versions/Current/Headers ${FRAMEWORK_DIR}/Headers\nln -s Versions/Current/Resources ${FRAMEWORK_DIR}/Resources\nln -s Versions/Current/${FRAMEWORK_NAME} ${FRAMEWORK_DIR}/${FRAMEWORK_NAME}\n\n#--------------------------------------------------------------------\necho \"[4] Framework: Creating library...\"\n#--------------------------------------------------------------------\nlipo -create \\\n build/${BUILD_STYLE}-iphoneos/lib${FRAMEWORK_NAME}.a \\\n build/${BUILD_STYLE}-iphonesimulator/lib${FRAMEWORK_NAME}.a \\\n -o \"${FRAMEWORK_DIR}/Versions/Current/${FRAMEWORK_NAME}\"\n\n#--------------------------------------------------------------------\necho \"[5] Framework: Copying assets into current version...\"\n#--------------------------------------------------------------------\ncp Headers/*.h ${FRAMEWORK_DIR}/Headers/\ncp Info.plist ${FRAMEWORK_DIR}/Resources/\n\n#--------------------------------------------------------------------\necho \"[6] Framework: Packaging framework...\"\n#--------------------------------------------------------------------\ncd ${FRAMEWORK_BUILD_PATH}\nzip -ry ${PACKAGENAME} $(basename $FRAMEWORK_DIR)";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1CADD81812E0742E00E9CB02 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1CADD83E12E078BE00E9CB02 /* TableDBTest.m in Sources */,
+				1CADD84412E0794600E9CB02 /* GHUnitIOSTestMain.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2AAC07B0554694100DB518D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1CADD7D112E0530200E9CB02 /* md5.c in Sources */,
+				1CADD7D312E0530200E9CB02 /* myconf.c in Sources */,
+				1CADD7D512E0530200E9CB02 /* tcadb.c in Sources */,
+				1CADD7D612E0530200E9CB02 /* tcbdb.c in Sources */,
+				1CADD7D712E0530200E9CB02 /* tcfdb.c in Sources */,
+				1CADD7D812E0530200E9CB02 /* tchdb.c in Sources */,
+				1CADD7D912E0530200E9CB02 /* tctdb.c in Sources */,
+				1CADD7DA12E0530200E9CB02 /* tcutil.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1CADD94212E17AA100E9CB02 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1CADD73712E04CD600E9CB02 /* TokyoCabinet.framework */;
+			targetProxy = 1CADD94112E17AA100E9CB02 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1CADD73812E04CD600E9CB02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = TokyoCabinet.framework;
+			};
+			name = Debug;
+		};
+		1CADD73912E04CD600E9CB02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				PRODUCT_NAME = TokyoCabinet.framework;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		1CADD81E12E0742F00E9CB02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/build/Debug-framework\"",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				INFOPLIST_FILE = "Tests-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = Tests;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		1CADD81F12E0742F00E9CB02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/build/Debug-framework\"",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				INFOPLIST_FILE = "Tests-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = Tests;
+				SDKROOT = iphoneos;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		1DEB921F08733DC00010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/TokyoCabinet.dst;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = TokyoCabinet_Prefix.pch;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
+				OTHER_CFLAGS = (
+					"-DNDEBUG",
+					"-D_GNU_SOURCE=1",
+					"-D_REENTRANT",
+					"-D__EXTENSIONS__",
+					"-D_MYNOZLIB",
+					"-D_MYNOBZIP",
+				);
+				PRODUCT_NAME = TokyoCabinet;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1DEB922008733DC00010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				DSTROOT = /tmp/TokyoCabinet.dst;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = TokyoCabinet_Prefix.pch;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
+				OTHER_CFLAGS = (
+					"-DNDEBUG",
+					"-D_GNU_SOURCE=1",
+					"-D_REENTRANT",
+					"-D__EXTENSIONS__",
+					"-D_MYNOZLIB",
+					"-D_MYNOBZIP",
+				);
+				PRODUCT_NAME = TokyoCabinet;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		1DEB922308733DC00010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CFLAGS = (
+					"-DNDEBUG",
+					"-D_GNU_SOURCE=1",
+					"-D_REENTRANT",
+					"-D__EXTENSIONS__",
+					"-D_MYNOZLIB",
+					"-D_MYNOBZIP",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		1DEB922408733DC00010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CFLAGS = (
+					"-DNDEBUG",
+					"-D_GNU_SOURCE=1",
+					"-D_REENTRANT",
+					"-D__EXTENSIONS__",
+					"-D_MYNOZLIB",
+					"-D_MYNOBZIP",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1CADD73A12E04CD700E9CB02 /* Build configuration list for PBXAggregateTarget "TokyoCabinet.framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1CADD73812E04CD600E9CB02 /* Debug */,
+				1CADD73912E04CD600E9CB02 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1CADD82012E0742F00E9CB02 /* Build configuration list for PBXNativeTarget "Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1CADD81E12E0742F00E9CB02 /* Debug */,
+				1CADD81F12E0742F00E9CB02 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "TokyoCabinet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB921F08733DC00010E9CD /* Debug */,
+				1DEB922008733DC00010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "TokyoCabinet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB922308733DC00010E9CD /* Debug */,
+				1DEB922408733DC00010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0867D690FE84028FC02AAC07 /* Project object */;
+}

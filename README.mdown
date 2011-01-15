@@ -1,0 +1,29 @@
+TokyoCabinetFramework
+=====================
+
+TokyoCabinetFramework is a simple static iOS framework of Tokyo Cabinet.
+It supports only C-API and there is no Objective-C support.
+
+[Tokyo Cabinet](http://1978th.net/tokyocabinet/index.html )
+
+License
+-------
+
+TokyoCabinetFramework is provided under the [LGPL](http://github.com/yatsu/TokyoCabinetFramework/blob/master/COPYING ).
+
+Tokyo Cabinet is included under 'Headers' and 'Sources' directory.
+It is provided under the [LGPL](http://github.com/yatsu/TokyoCabinetFramework/blob/master/COPYING ).
+
+How to use
+----------
+
+1. Open TokyoCabinet.xcodeproj with Xcode.
+2. Select the target 'TokyoCabinet.framework' and build it.
+3. Copy build/Release-framework/TokyoCabinet.framework to your project directory.
+4. Add the TokyoCabinet.framework to your Xcode project.
+
+You need to add 'TokyoCabinet/' prefix to import paths.
+For example, you need to import <TokyoCabinet/tctdb.h> instead of <tctdb.h>.
+
+TokyoCabinetFramework contains simple tests with GHUnit.
+You can run them by selecting target 'Tests'.
