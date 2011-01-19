@@ -1,14 +1,12 @@
 #import <GHUnit/GHUnit.h>
 
-#import <TokyoCabinet/tcutil.h>
-#import <TokyoCabinet/tctdb.h>
+#import <TokyoCabinet/TCTableDB.h>
 
-@interface ExampleTest : GHTestCase { }
-    TCTDB *tdb;
-    int ret, ecode;
+@interface TableDBTest : GHTestCase { }
+    TCTableDB *tdb;
 @end
 
-@implementation ExampleTest
+@implementation TableDBTest
 
 - (BOOL)shouldRunOnMainThread {
     // By default NO, but if you have a UI test or test dependent on running on the main thread return YES
@@ -17,31 +15,17 @@
 
 - (void)setUpClass {
     // Run at start of all tests in the class
-    /* create the object */
-    tdb = tctdbnew();
-
-    // Run before each test method
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *path = [NSString stringWithFormat:@"%@/casket.tct", [paths objectAtIndex:0]];
+    NSString *path = [NSString stringWithFormat:@"%@/tctdb.tct", [paths objectAtIndex:0]];
     GHTestLog(@"path: %@", path);
-
-    /* open the database */
-    if (!tctdbopen(tdb, [path UTF8String], TDBOWRITER | TDBOCREAT)) {
-        ecode = tctdbecode(tdb);
-        GHTestLog(@"open error: %s\n", tctdberrmsg(ecode));
-    }
+    NSError *error;
+    [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
+    tdb = [TCTableDB dbWithFile:path];
 }
 
 - (void)tearDownClass {
     // Run at end of all tests in the class
-    /* close the database */
-    if (!tctdbclose(tdb)) {
-        ecode = tctdbecode(tdb);
-        GHTestLog(@"close error: %s\n", tctdberrmsg(ecode));
-    }
-
-    /* delete the object */
-    tctdbdel(tdb);
+    //[tdb release];
 }
 
 - (void)setUp {
@@ -52,64 +36,79 @@
     // Run after each test method
 }
 
-- (void)testTableDBOpened {
-    GHAssertNotNULL(tdb, nil);
-}
-
 - (void)testStoreAndSearch {
-    char pkbuf[256];
-    int pksiz = sprintf(pkbuf, "%ld", (long)tctdbgenuid(tdb));
-    TCMAP *cols = tcmapnew3("name", "mikio", "age", "30", "lang", "ja,en,c", NULL);
-    if (!tctdbput(tdb, pkbuf, pksiz, cols)) {
-        ecode = tctdbecode(tdb);
-        GHTestLog(@"put error: %s\n", tctdberrmsg(ecode));
-    }
-    tcmapdel(cols);
+    NSString *key = [NSString stringWithFormat:@"%ld", (long)[tdb generateUniqueId]];
+    TCMap *cols = [TCMap map];
+    [cols setObject:@"yatsu" forKey:@"name"];
+    [cols setObject:@"34" forKey:@"age"];
+    [cols setObject:@"ja,de,objc" forKey:@"lang"];
+    [tdb setMap:cols forKey:key];
 
-    pksiz = sprintf(pkbuf, "12345");
-    cols = tcmapnew();
-    tcmapput2(cols, "name", "falcon");
-    tcmapput2(cols, "age", "31");
-    tcmapput2(cols, "lang", "ja");
-    ret = tctdbput(tdb, pkbuf, pksiz, cols);
-    if (!ret) {
-        ecode = tctdbecode(tdb);
-        GHTestLog(@"put error: %s\n", tctdberrmsg(ecode));
-    }
-    tcmapdel(cols);
-    GHAssertNotEquals(0, ret, nil);
+    GHAssertEquals((uint64_t)1, tdb.count, nil);
 
-    ret = tctdbput3(tdb, "abcde", "name\tjoker\tage\t19\tlang\ten,es");
-    if (!ret) {
-        ecode = tctdbecode(tdb);
-        GHTestLog(@"put error: %s\n", tctdberrmsg(ecode));
-    }
-    GHAssertNotEquals(0, ret, nil);
+    cols = [TCMap map];
+    [cols setObject:@"falcon" forKey:@"name"];
+    [cols setObject:@"31" forKey:@"age"];
+    [cols setObject:@"ja" forKey:@"lang"];
+    [tdb setMap:cols forKey:@"12345"];
 
-    TDBQRY *qry = tctdbqrynew(tdb);
-    tctdbqryaddcond(qry, "age", TDBQCNUMGE, "20");
-    tctdbqryaddcond(qry, "lang", TDBQCSTROR, "ja,en");
-    tctdbqrysetorder(qry, "name", TDBQOSTRASC);
-    tctdbqrysetlimit(qry, 10, 0);
-    TCLIST *res = tctdbqrysearch(qry);
-    for (int i = 0; i < tclistnum(res); i++){
-        NSMutableString *str = [NSMutableString string];
-        int rsiz;
-        const char *rbuf = tclistval(res, i, &rsiz);
-        TCMAP *cols = tctdbget(tdb, rbuf, rsiz);
-        if (cols) {
-            [str appendFormat:@"%s", rbuf];
-            tcmapiterinit(cols);
-            const char *name;
-            while ((name = tcmapiternext2(cols)) != NULL) {
-                [str appendFormat:@"\t%s\t%s", name, tcmapget2(cols, name)];
-            }
-            GHTestLog(@"result: %@\n", str);
-            tcmapdel(cols);
-        }
-    }
-    tclistdel(res);
-    tctdbqrydel(qry);
+    GHAssertEquals((uint64_t)2, tdb.count, nil);
+
+    [tdb setMapFromTabSeparatedString:@"name\tjoker\tage\t19\tlang\ten,es" forKey:@"abcde"];
+
+    GHAssertEquals((uint64_t)3, tdb.count, nil);
+
+    cols = [tdb mapForKey:key];
+    GHAssertEqualStrings(@"yatsu", [cols objectForKey:@"name"], nil);
+    GHAssertEqualStrings(@"34", [cols objectForKey:@"age"], nil);
+    GHAssertEqualStrings(@"ja,de,objc", [cols objectForKey:@"lang"], nil);
+
+    cols = [tdb mapForKey:@"12345"];
+    GHAssertEqualStrings(@"falcon", [cols objectForKey:@"name"], nil);
+    GHAssertEqualStrings(@"31", [cols objectForKey:@"age"], nil);
+    GHAssertEqualStrings(@"ja", [cols objectForKey:@"lang"], nil);
+
+    cols = [tdb mapForKey:@"abcde"];
+    GHAssertEqualStrings(@"joker", [cols objectForKey:@"name"], nil);
+    GHAssertEqualStrings(@"19", [cols objectForKey:@"age"], nil);
+    GHAssertEqualStrings(@"en,es", [cols objectForKey:@"lang"], nil);
+
+    TCTableDBQuery *query = [TCTableDBQuery queryWithTableDB:tdb];
+    [query addConditionForColumn:@"age" numberGreaterThanOrEqual:[NSNumber numberWithInteger:20]];
+    [query setOrder:TCTableDBQueryOrderStringAsc forColumn:@"name"];
+    [query setLimit:100 skip:0];
+
+    TCList *list = [query searchKeys];
+    GHAssertEquals(2, list.count, nil);
+    GHAssertEqualStrings(@"12345", [list objectAtIndex:0], nil);
+    GHAssertEqualStrings(@"1", [list objectAtIndex:1], nil);
+
+    NSArray *maps = [query searchMaps];
+    GHAssertEquals((NSUInteger)2, maps.count, nil);
+
+    cols = [maps objectAtIndex:0];
+    GHTestLog(@"match 0: %@", cols);
+    GHAssertEqualStrings(@"falcon", [cols objectForKey:@"name"], nil);
+
+    cols = [maps objectAtIndex:1];
+    GHTestLog(@"match 1: %@", cols);
+    GHAssertEqualStrings(@"yatsu", [cols objectForKey:@"name"], nil);
+
+    query = [TCTableDBQuery queryWithTableDB:tdb];
+    [query addConditionForColumn:@"age" numberLessThan:[NSNumber numberWithFloat:20.5]];
+    [query setOrder:TCTableDBQueryOrderStringAsc forColumn:@"name"];
+    [query setLimit:100 skip:0];
+
+    list = [query searchKeys];
+    GHAssertEquals(1, list.count, nil);
+    GHAssertEqualStrings(@"abcde", [list objectAtIndex:0], nil);
+
+    maps = [query searchMaps];
+    GHAssertEquals((NSUInteger)1, maps.count, nil);
+
+    cols = [maps objectAtIndex:0];
+    GHTestLog(@"match 0: %@", cols);
+    GHAssertEqualStrings(@"joker", [cols objectForKey:@"name"], nil);
 }
 
 @end
