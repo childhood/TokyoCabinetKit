@@ -27,11 +27,11 @@ int myrand(int range) {
     return (high + low) % range;
 }
 
-@interface TCMapTest : GHTestCase { }
+@interface MapTest : GHTestCase { }
     TCMap *map;
 @end
 
-@implementation TCMapTest
+@implementation MapTest
 
 - (NSInteger)procMapWithRnum:(int)rnum bnum:(int)bnum rd:(BOOL)rd tr:(BOOL)tr rnd:(BOOL)rnd dmode:(int)dmode {
     GHTestLog(@"<Map Writing Test>\n  seed=%u  rnum=%d  bnum=%d  rd=%d  tr=%d  rnd=%d  dmode=%d",

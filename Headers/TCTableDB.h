@@ -81,7 +81,7 @@ typedef enum {
 - (BOOL)setIndex:(TCTableDBIndexType)type forColumn:(NSString *)name;
 - (BOOL)setIndex:(TCTableDBIndexType)type forColumn:(NSString *)name keep:(BOOL)keep;
 - (BOOL)removeIndex:(TCTableDBIndexType)type forColumn:(NSString *)name;
-- (BOOL)optimizeIndex:(TCTableDBIndexType)type forColumn:(NSString *)name;
+- (BOOL)optimizeIndexForColumn:(NSString *)name;
 - (int64_t)generateUniqueId;
 - (TCList *)metaSearch:(NSArray *)queries type:(NSInteger)type;
 

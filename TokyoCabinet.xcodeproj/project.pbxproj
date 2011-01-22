@@ -21,10 +21,10 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		1C17737C12E2EF6000ED2569 /* TCMapTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C17737B12E2EF6000ED2569 /* TCMapTest.m */; };
 		1C1774B112E3141300ED2569 /* TCInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C1774B012E3141300ED2569 /* TCInternal.h */; };
 		1C1774D312E32EF200ED2569 /* TCList.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C1774D212E32EF200ED2569 /* TCList.h */; };
 		1C1774D512E32EF900ED2569 /* TCList.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1774D412E32EF900ED2569 /* TCList.m */; };
+		1C637DEF12EB3E9000FAF541 /* MapTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C637DEE12EB3E9000FAF541 /* MapTest.m */; };
 		1CADD7D112E0530200E9CB02 /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = 1CADD7C712E0530200E9CB02 /* md5.c */; };
 		1CADD7D212E0530200E9CB02 /* md5.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CADD7C812E0530200E9CB02 /* md5.h */; };
 		1CADD7D312E0530200E9CB02 /* myconf.c in Sources */ = {isa = PBXBuildFile; fileRef = 1CADD7C912E0530200E9CB02 /* myconf.c */; };
@@ -50,7 +50,6 @@
 		1CADD8D012E07FF000E9CB02 /* tcutil.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CADD8CA12E07FF000E9CB02 /* tcutil.h */; };
 		1CADD94A12E193DE00E9CB02 /* TCTableDB.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CADD94912E193DE00E9CB02 /* TCTableDB.h */; };
 		1CADD94C12E193E500E9CB02 /* TCTableDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CADD94B12E193E500E9CB02 /* TCTableDB.m */; };
-		1CADD97112E196DF00E9CB02 /* TCTableDBTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CADD97012E196DF00E9CB02 /* TCTableDBTest.m */; };
 		1CADD97F12E19E1100E9CB02 /* TCMap.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CADD97E12E19E1100E9CB02 /* TCMap.h */; };
 		1CADD98112E19E1A00E9CB02 /* TCMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CADD98012E19E1A00E9CB02 /* TCMap.m */; };
 		1CADD9BD12E2706E00E9CB02 /* NSObject+TCUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CADD9BB12E2706E00E9CB02 /* NSObject+TCUtils.h */; };
@@ -63,10 +62,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1C17737B12E2EF6000ED2569 /* TCMapTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCMapTest.m; sourceTree = "<group>"; };
 		1C1774B012E3141300ED2569 /* TCInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCInternal.h; sourceTree = "<group>"; };
 		1C1774D212E32EF200ED2569 /* TCList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCList.h; sourceTree = "<group>"; };
 		1C1774D412E32EF900ED2569 /* TCList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCList.m; sourceTree = "<group>"; };
+		1C637DEE12EB3E9000FAF541 /* MapTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapTest.m; sourceTree = "<group>"; };
 		1CADD73312E04C3E00E9CB02 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1CADD7C712E0530200E9CB02 /* md5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = md5.c; sourceTree = "<group>"; };
 		1CADD7C812E0530200E9CB02 /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
@@ -95,7 +94,6 @@
 		1CADD8CA12E07FF000E9CB02 /* tcutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tcutil.h; sourceTree = "<group>"; };
 		1CADD94912E193DE00E9CB02 /* TCTableDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCTableDB.h; sourceTree = "<group>"; };
 		1CADD94B12E193E500E9CB02 /* TCTableDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCTableDB.m; sourceTree = "<group>"; };
-		1CADD97012E196DF00E9CB02 /* TCTableDBTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCTableDBTest.m; sourceTree = "<group>"; };
 		1CADD97E12E19E1100E9CB02 /* TCMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCMap.h; sourceTree = "<group>"; };
 		1CADD98012E19E1A00E9CB02 /* TCMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCMap.m; sourceTree = "<group>"; };
 		1CADD9BB12E2706E00E9CB02 /* NSObject+TCUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TCUtils.h"; sourceTree = "<group>"; };
@@ -220,11 +218,10 @@
 		1CADD83C12E078A600E9CB02 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				1CF102FD12E5CD5600946C15 /* LowLevelTableDBTest.m */,
 				1CADD84312E0794600E9CB02 /* GHUnitIOSTestMain.m */,
+				1CF102FD12E5CD5600946C15 /* LowLevelTableDBTest.m */,
+				1C637DEE12EB3E9000FAF541 /* MapTest.m */,
 				1CADD83D12E078BE00E9CB02 /* TableDBTest.m */,
-				1C17737B12E2EF6000ED2569 /* TCMapTest.m */,
-				1CADD97012E196DF00E9CB02 /* TCTableDBTest.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -360,9 +357,8 @@
 			files = (
 				1CADD83E12E078BE00E9CB02 /* TableDBTest.m in Sources */,
 				1CADD84412E0794600E9CB02 /* GHUnitIOSTestMain.m in Sources */,
-				1CADD97112E196DF00E9CB02 /* TCTableDBTest.m in Sources */,
-				1C17737C12E2EF6000ED2569 /* TCMapTest.m in Sources */,
 				1CF102FE12E5CD5600946C15 /* LowLevelTableDBTest.m in Sources */,
+				1C637DEF12EB3E9000FAF541 /* MapTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -260,7 +260,7 @@
     return tctdbsetindex(tdb, [name UTF8String], TDBITVOID);
 }
 
-- (BOOL)optimizeIndex:(TCTableDBIndexType)type forColumn:(NSString *)name {
+- (BOOL)optimizeIndexForColumn:(NSString *)name {
     return tctdbsetindex(tdb, [name UTF8String], TDBITOPT);
 }
 
