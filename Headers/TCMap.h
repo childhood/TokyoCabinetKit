@@ -33,7 +33,7 @@
 - (uint64_t)size;
 - (TCList *)allKeys;
 - (TCList *)allValues;
-- (NSInteger)addInteger:(NSInteger)value forKey:(id)key;
+- (int)addInteger:(int)value forKey:(id)key;
 - (double)addDouble:(double)value forKey:(id)key;
 - (void)removeAllObjects;
 

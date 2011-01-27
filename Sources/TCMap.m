@@ -152,7 +152,7 @@
     return [TCList listWithInternalList:tcmapvals(map)];
 }
 
-- (NSInteger)addInteger:(NSInteger)value forKey:(id)key {
+- (int)addInteger:(int)value forKey:(id)key {
     NSData *keyData = [self dataFromKey:key];
     return tcmapaddint(map, [keyData bytes], [keyData length], value);
 }

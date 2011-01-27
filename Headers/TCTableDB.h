@@ -27,21 +27,21 @@ typedef enum {
 }
 
 @property (nonatomic, readonly) TCTDB *tdb;
-@property (nonatomic, readonly) NSInteger ecode;
+@property (nonatomic, readonly) int ecode;
 @property (nonatomic, readonly) NSString *errorMessage;
 @property (nonatomic, readonly) NSString *path;
 @property (nonatomic, readonly) uint64_t count;
 @property (nonatomic, readonly) uint64_t size;
 
 + (id)dbWithFile:(NSString *)file;
-+ (id)dbWithFile:(NSString *)file mode:(NSInteger)mode;
++ (id)dbWithFile:(NSString *)file mode:(int)mode;
 
 - (id)initWithFile:(NSString *)file;
-- (id)initWithFile:(NSString *)file mode:(NSInteger)mode;
+- (id)initWithFile:(NSString *)file mode:(int)mode;
 
-- (NSInteger)ecode;
+- (int)ecode;
 - (NSString *)errorMessage;
-- (NSString *)errorMessage:(NSInteger)ecode;
+- (NSString *)errorMessage:(int)ecode;
 - (BOOL)setMutex;
 - (BOOL)tuneBnum:(int64_t)bnum apow:(int8_t)apow fpow:(int8_t)fpow opts:(uint8_t)opts;
 - (BOOL)setCacheRcnum:(int32_t)rcnum lcnum:(int32_t)lcnum ncnum:(int32_t)ncnum;
@@ -60,13 +60,13 @@ typedef enum {
 - (TCMap *)mapForKey:(id)key;
 - (NSData *)zeroSeparatedDataForKey:(id)key;
 - (NSString *)tabSeparatedStringForKey:(id)key;
-- (NSInteger)mapSizeForKey:(id)key;
+- (int)mapSizeForKey:(id)key;
 - (void)iteratorInit;
 - (NSData *)iteratorNextKeyData;
 - (NSString *)iteratorNextKeyString;
 - (TCMap *)iteratorNextMap;
-- (TCList *)forwardMatchingKeys:(id)key max:(NSInteger)max;
-- (NSInteger)addInteger:(NSInteger)value forKey:(id)key;
+- (TCList *)forwardMatchingKeys:(id)key max:(int)max;
+- (int)addInteger:(int)value forKey:(id)key;
 - (double)addDouble:(double)value forKey:(id)key;
 - (void)sync;
 - (BOOL)optimizeBnum:(int64_t)bnum apow:(int8_t)apow fpow:(int8_t)fpow opts:(uint8_t)opts;
@@ -83,6 +83,6 @@ typedef enum {
 - (BOOL)removeIndex:(TCTableDBIndexType)type forColumn:(NSString *)name;
 - (BOOL)optimizeIndexForColumn:(NSString *)name;
 - (int64_t)generateUniqueId;
-- (TCList *)metaSearch:(NSArray *)queries type:(NSInteger)type;
+- (TCList *)metaSearch:(NSArray *)queries type:(int)type;
 
 @end

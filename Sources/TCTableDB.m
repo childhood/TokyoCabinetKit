@@ -12,7 +12,7 @@
     return [[[TCTableDB alloc] initWithFile:file] autorelease];
 }
 
-+ (id)dbWithFile:(NSString *)file mode:(NSInteger)mode {
++ (id)dbWithFile:(NSString *)file mode:(int)mode {
     return [[[TCTableDB alloc] initWithFile:file mode:mode] autorelease];
 }
 
@@ -27,7 +27,7 @@
     return self;
 }
 
-- (id)initWithFile:(NSString *)file mode:(NSInteger)mode {
+- (id)initWithFile:(NSString *)file mode:(int)mode {
     if ((self = [super init])) {
         tdb = tctdbnew();
         if (!tctdbopen(tdb, [file UTF8String], mode)) {
@@ -50,7 +50,7 @@
 
 #pragma mark Public Methods
 
-- (NSInteger)ecode {
+- (int)ecode {
     return tctdbecode(tdb);
 }
 
@@ -58,7 +58,7 @@
    return [self errorMessage:self.ecode];
 }
 
-- (NSString *)errorMessage:(NSInteger)code {
+- (NSString *)errorMessage:(int)code {
     return [NSString stringWithUTF8String:tctdberrmsg(code)];
 }
 
@@ -167,7 +167,7 @@
     return str ? [NSString stringWithUTF8String:str] : nil;
 }
 
-- (NSInteger)mapSizeForKey:(id)key {
+- (int)mapSizeForKey:(id)key {
     NSData *keyData = [self dataFromKey:key];
     return tctdbvsiz(tdb, [keyData bytes], [keyData length]);
 }
@@ -190,14 +190,14 @@
     return [TCMap mapWithInternalMap:tctdbiternext3(tdb)];
 }
 
-- (TCList *)forwardMatchingKeys:(id)key max:(NSInteger)max {
+- (TCList *)forwardMatchingKeys:(id)key max:(int)max {
     NSData *keyData = [self dataFromKey:key];
     return [TCList listWithInternalList:tctdbfwmkeys(
         tdb, [keyData bytes], [keyData length], max
     )];
 }
 
-- (NSInteger)addInteger:(NSInteger)value forKey:(id)key {
+- (int)addInteger:(int)value forKey:(id)key {
     NSData *keyData = [self dataFromKey:key];
     return tctdbaddint(tdb, [keyData bytes], [keyData length], value);
 }
@@ -268,7 +268,7 @@
     return tctdbgenuid(tdb);
 }
 
-- (TCList *)metaSearch:(NSArray *)queries type:(NSInteger)type {
+- (TCList *)metaSearch:(NSArray *)queries type:(int)type {
     NSRange range = NSMakeRange(0, queries.count);
     TDBQRY **array = malloc(sizeof(TDBQRY *) * queries.count);
     for (NSInteger i = 0; i < queries.count; i++) {

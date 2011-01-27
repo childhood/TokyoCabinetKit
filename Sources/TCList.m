@@ -12,7 +12,7 @@
     return [[[TCList alloc] init] autorelease];
 }
 
-+ (id)listWithNumber:(NSInteger)num {
++ (id)listWithNumber:(int)num {
     return [[[TCList alloc] initWithNumber:num] autorelease];
 }
 
@@ -31,7 +31,7 @@
     return self;
 }
 
-- (id)initWithNumber:(NSInteger)num {
+- (id)initWithNumber:(int)num {
     if ((self = [super init])) {
         list = tclistnew2(num);
     }
@@ -67,11 +67,11 @@
 
 #pragma mark Public Methods
 
-- (NSInteger)count {
+- (int)count {
     return tclistnum(list);
 }
 
-- (id)objectAtIndex:(NSInteger)index {
+- (id)objectAtIndex:(int)index {
     return [NSString stringWithUTF8String:tclistval2(list, index)];
 }
 
@@ -91,15 +91,15 @@
     return [NSString stringWithUTF8String:tclistshift2(list)];
 }
 
-- (void)insertObject:(id)object atIndex:(NSInteger)index {
+- (void)insertObject:(id)object atIndex:(int)index {
     tclistinsert2(list, index, [(NSString *)object UTF8String]);
 }
 
-- (void)removeObjectAtIndex:(NSInteger)index {
+- (void)removeObjectAtIndex:(int)index {
     tclistremove2(list, index);
 }
 
-- (void)replaceObjectAtIndex:(NSInteger)index withObject:(id)object {
+- (void)replaceObjectAtIndex:(int)index withObject:(id)object {
     tclistover2(list, index, [(NSString *)object UTF8String]);
 }
 
@@ -107,16 +107,16 @@
     tclistsort(list);
 }
 
-- (NSInteger)indexOfObject:(id)object {
+- (int)indexOfObject:(id)object {
     return [self linearSearch:object];
 }
 
-- (NSInteger)linearSearch:(NSString *)object {
+- (int)linearSearch:(NSString *)object {
     const char *str = [object UTF8String];
     return tclistlsearch(list, str, strlen(str));
 }
 
-- (NSInteger)binarySearch:(NSString *)object {
+- (int)binarySearch:(NSString *)object {
     const char *str = [object UTF8String];
     return tclistbsearch(list, str, strlen(str));
 }

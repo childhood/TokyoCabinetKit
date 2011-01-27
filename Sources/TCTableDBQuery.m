@@ -166,7 +166,8 @@
                           and:(NSNumber *)num2 {
     [self addConditionForColumn:name
                            type:TCTableDBQueryConditionNumberLessEqual
-                     expression:[NSString stringWithFormat:@"%@ %@", [num1 stringValue], [num2 stringValue]]];
+                     expression:[NSString stringWithFormat:@"%@ %@",
+                                 [num1 stringValue], [num2 stringValue]]];
 }
 
 - (void)addConditionForColumn:(NSString *)name
@@ -238,7 +239,7 @@
     tctdbqrysetorder(query, [name UTF8String], order);
 }
 
-- (void)setLimit:(NSInteger)limit skip:(NSInteger)skip {
+- (void)setLimit:(int)limit skip:(int)skip {
     tctdbqrysetlimit(query, limit, skip);
 }
 
@@ -249,7 +250,7 @@
 - (NSArray *)searchMaps {
     TCList *keys = [TCList listWithInternalList:tctdbqrysearch(query)];
     NSMutableArray *maps = [NSMutableArray array];
-    for (NSInteger i = 0; i < keys.count; i++) {
+    for (int i = 0; i < keys.count; i++) {
         [maps addObject:[tdb mapForKey:[keys objectAtIndex:i]]];
     }
     return maps;

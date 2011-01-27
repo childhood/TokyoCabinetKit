@@ -7,30 +7,30 @@
 }
 
 @property (nonatomic, readonly) TCLIST *list;
-@property (nonatomic, readonly) NSInteger count;
+@property (nonatomic, readonly) int count;
 
 + (id)list;
-+ (id)listWithNumber:(NSInteger)num;
++ (id)listWithNumber:(int)num;
 + (id)listWithList:(TCList *)aList;
 + (id)listWithInternalList:(TCLIST *)aList;
 
-- (id)initWithNumber:(NSInteger)num;
+- (id)initWithNumber:(int)num;
 - (id)initWithList:(TCList *)aList;
 - (id)initWithInternalList:(TCLIST *)aList;
 
-- (NSInteger)count;
-- (id)objectAtIndex:(NSInteger)index;
+- (int)count;
+- (id)objectAtIndex:(int)index;
 - (void)addObject:(id)object;
 - (id)popObject;
 - (void)unshiftObject:(id)object;
 - (id)shiftObject;
-- (void)insertObject:(id)object atIndex:(NSInteger)index;
-- (void)removeObjectAtIndex:(NSInteger)index;
-- (void)replaceObjectAtIndex:(NSInteger)index withObject:(id)object;
+- (void)insertObject:(id)object atIndex:(int)index;
+- (void)removeObjectAtIndex:(int)index;
+- (void)replaceObjectAtIndex:(int)index withObject:(id)object;
 - (void)sort;
-- (NSInteger)indexOfObject:(id)object;
-- (NSInteger)linearSearch:(NSString *)object;
-- (NSInteger)binarySearch:(NSString *)object;
+- (int)indexOfObject:(id)object;
+- (int)linearSearch:(NSString *)object;
+- (int)binarySearch:(NSString *)object;
 - (void)removeAllObjects;
 
 @end

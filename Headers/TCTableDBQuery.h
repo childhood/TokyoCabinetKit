@@ -111,7 +111,7 @@ typedef enum {
 
 - (void)setOrder:(TCTableDBQueryOrder)order forColumn:(NSString *)name;
 
-- (void)setLimit:(NSInteger)limit skip:(NSInteger)skip;
+- (void)setLimit:(int)limit skip:(int)skip;
 
 - (TCList *)searchKeys;
 
