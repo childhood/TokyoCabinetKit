@@ -184,4 +184,20 @@
     [encoder encodeObject:data forKey:@"map"];
 }
 
+#pragma mark NSKeyValueCoding
+
+- (void)setValue:(id)value forKey:(NSString *)key {
+    if (value)
+        [self setObject:value forKey:key];
+    else
+        [self removeObjectForKey:key];
+}
+
+- (id)valueForKey:(NSString *)key {
+    if ([[key substringToIndex:1] isEqualToString:@"@"])
+        return [super valueForKey:[key substringFromIndex:1]];
+    else
+        return [self objectForKey:key];
+}
+
 @end

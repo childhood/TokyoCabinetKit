@@ -2,8 +2,10 @@
 
 #import <TokyoCabinet/TCTableDB.h>
 
-@interface TableDBTest : GHTestCase { }
+@interface TableDBTest : GHTestCase {
     TCTableDB *tdb;
+}
+
 @end
 
 @implementation TableDBTest

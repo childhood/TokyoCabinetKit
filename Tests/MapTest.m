@@ -27,8 +27,9 @@ int myrand(int range) {
     return (high + low) % range;
 }
 
-@interface MapTest : GHTestCase { }
-    TCMap *map;
+@interface MapTest : GHTestCase {
+}
+
 @end
 
 @implementation MapTest
@@ -149,6 +150,19 @@ int myrand(int range) {
         NSString *str = [[NSString alloc] initWithFormat:@"%08d", myrand(10000) + 1];
         [dict setObject:str forKey:str];
     }
+}
+
+- (void)testKeyValueCoding {
+    TCMap *map = [TCMap map];
+    GHAssertNil([map valueForKey:@"property"], nil);
+
+    // set
+    [map setValue:@"set property" forKey:@"property"];
+    GHAssertEqualStrings([map valueForKey:@"property"], @"set property", nil);
+
+    // remove
+    [map setValue:nil forKey:@"property"];
+    GHAssertNil([map valueForKey:@"property"], nil);
 }
 
 @end

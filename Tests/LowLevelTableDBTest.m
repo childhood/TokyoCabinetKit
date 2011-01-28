@@ -3,9 +3,11 @@
 #import <TokyoCabinet/tcutil.h>
 #import <TokyoCabinet/tctdb.h>
 
-@interface LowLevelTableDBTest : GHTestCase { }
+@interface LowLevelTableDBTest : GHTestCase {
     TCTDB *tdb;
     int ret, ecode;
+}
+
 @end
 
 @implementation LowLevelTableDBTest
