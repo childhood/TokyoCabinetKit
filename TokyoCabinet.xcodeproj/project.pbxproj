@@ -62,6 +62,9 @@
 		1CADD9BD12E2706E00E9CB02 /* NSObject+TCUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CADD9BB12E2706E00E9CB02 /* NSObject+TCUtils.h */; };
 		1CADD9BE12E2706E00E9CB02 /* NSObject+TCUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CADD9BC12E2706E00E9CB02 /* NSObject+TCUtils.m */; };
 		1CC4C9B512F2F9DF00C06772 /* TCTableModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC4C9B412F2F9DF00C06772 /* TCTableModelTest.m */; };
+		1CC4C9EF12F5203100C06772 /* TokyoCabinet.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CC4C9EE12F5203100C06772 /* TokyoCabinet.h */; };
+		1CC4CA6112F5466B00C06772 /* NSObject+TokyoCabinet.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CC4CA6012F5466B00C06772 /* NSObject+TokyoCabinet.h */; };
+		1CC4CA6312F5467300C06772 /* NSObject+TokyoCabinet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC4CA6212F5467300C06772 /* NSObject+TokyoCabinet.m */; };
 		1CF102E712E5C50300946C15 /* TCTableDBQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CF102E612E5C50300946C15 /* TCTableDBQuery.h */; };
 		1CF102F012E5C55000946C15 /* TCTableDBQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF102EF12E5C55000946C15 /* TCTableDBQuery.m */; };
 		1CF102FE12E5CD5600946C15 /* LowLevelTableDBTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF102FD12E5CD5600946C15 /* LowLevelTableDBTest.m */; };
@@ -112,6 +115,9 @@
 		1CADD9BB12E2706E00E9CB02 /* NSObject+TCUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TCUtils.h"; sourceTree = "<group>"; };
 		1CADD9BC12E2706E00E9CB02 /* NSObject+TCUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TCUtils.m"; sourceTree = "<group>"; };
 		1CC4C9B412F2F9DF00C06772 /* TCTableModelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCTableModelTest.m; sourceTree = "<group>"; };
+		1CC4C9EE12F5203100C06772 /* TokyoCabinet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokyoCabinet.h; sourceTree = "<group>"; };
+		1CC4CA6012F5466B00C06772 /* NSObject+TokyoCabinet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TokyoCabinet.h"; sourceTree = "<group>"; };
+		1CC4CA6212F5467300C06772 /* NSObject+TokyoCabinet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TokyoCabinet.m"; sourceTree = "<group>"; };
 		1CF102E612E5C50300946C15 /* TCTableDBQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCTableDBQuery.h; sourceTree = "<group>"; };
 		1CF102EF12E5C55000946C15 /* TCTableDBQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCTableDBQuery.m; sourceTree = "<group>"; };
 		1CF102FD12E5CD5600946C15 /* LowLevelTableDBTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LowLevelTableDBTest.m; sourceTree = "<group>"; };
@@ -197,6 +203,8 @@
 		1CADD72F12E04C2800E9CB02 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				1CC4CA6012F5466B00C06772 /* NSObject+TokyoCabinet.h */,
+				1CC4C9EE12F5203100C06772 /* TokyoCabinet.h */,
 				1C1774D212E32EF200ED2569 /* TCList.h */,
 				1CADD97E12E19E1100E9CB02 /* TCMap.h */,
 				1CF102E612E5C50300946C15 /* TCTableDBQuery.h */,
@@ -215,6 +223,7 @@
 		1CADD79A12E0527D00E9CB02 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				1CC4CA6212F5467300C06772 /* NSObject+TokyoCabinet.m */,
 				1CA77ADE12F2843A008C3E06 /* bzlib.h */,
 				1C1774B012E3141300ED2569 /* TCInternal.h */,
 				1CADD9BB12E2706E00E9CB02 /* NSObject+TCUtils.h */,
@@ -283,6 +292,8 @@
 				1CF102E712E5C50300946C15 /* TCTableDBQuery.h in Headers */,
 				1CA77AAD12F270F4008C3E06 /* TCTableModel.h in Headers */,
 				1CA77ADF12F2843A008C3E06 /* bzlib.h in Headers */,
+				1CC4C9EF12F5203100C06772 /* TokyoCabinet.h in Headers */,
+				1CC4CA6112F5466B00C06772 /* NSObject+TokyoCabinet.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +418,7 @@
 				1C1774D512E32EF900ED2569 /* TCList.m in Sources */,
 				1CF102F012E5C55000946C15 /* TCTableDBQuery.m in Sources */,
 				1CA77AAF12F27102008C3E06 /* TCTableModel.m in Sources */,
+				1CC4CA6312F5467300C06772 /* NSObject+TokyoCabinet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,6 +567,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "Don't Code Sign";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -567,6 +580,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -575,6 +589,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "Don't Code Sign";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -586,6 +601,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Release;

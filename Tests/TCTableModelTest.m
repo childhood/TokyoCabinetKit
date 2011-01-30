@@ -1,5 +1,5 @@
+#import <objc/runtime.h>
 #import <GHUnit/GHUnit.h>
-
 #import <TokyoCabinet/TCTableModel.h>
 
 @interface SampleModel : TCTableModel {
@@ -11,6 +11,18 @@
 
 @property (nonatomic, assign) NSString *prop;
 @property (nonatomic, assign) NSString *p;
+@property (nonatomic, assign) BOOL b;
+@property (nonatomic, assign) int i;
+@property (nonatomic, assign) short s;
+@property (nonatomic, assign) long l;
+@property (nonatomic, assign) long long ll;
+@property (nonatomic, assign) unsigned char uc;
+@property (nonatomic, assign) unsigned int ui;
+@property (nonatomic, assign) unsigned short us;
+@property (nonatomic, assign) unsigned long ul;
+@property (nonatomic, assign) unsigned long long ull;
+@property (nonatomic, assign) float f;
+@property (nonatomic, assign) double d;
 
 @end
 
@@ -20,6 +32,7 @@
 
 @dynamic prop;
 @dynamic p;
+@dynamic b, i, s, l, ll, uc, ui, us, ul, ull, f, d;
 
 + (id)model {
     return [[[[self class] alloc] init] autorelease];
@@ -94,17 +107,6 @@
     GHTestLog(@"key: %@", model.key);
 }
 
-- (void)testDynamicProperty {
-    SampleModel *model = [SampleModel model];
-    GHAssertNil(model.prop, nil);
-    model.prop = @"a prop";
-    GHAssertEqualStrings(@"a prop", model.prop, nil);
-
-    GHAssertNil(model.p, nil);
-    model.p = @"1 character";
-    GHAssertEqualStrings(@"1 character", model.p, nil);
-}
-
 - (void)testKeyValueCoding {
     SampleModel *model = [SampleModel model];
     GHAssertNil([model valueForKey:@"property"], nil);
@@ -116,6 +118,68 @@
     // remove
     [model setValue:nil forKey:@"property"];
     GHAssertNil([model valueForKey:@"property"], nil);
+}
+
+- (void)testDynamicProperty {
+    SampleModel *model = [SampleModel model];
+    GHAssertNil(model.prop, nil);
+    model.prop = @"a prop";
+    GHAssertEqualStrings(@"a prop", model.prop, nil);
+
+    GHAssertNil(model.p, nil);
+    model.p = @"1 character";
+    GHAssertEqualStrings(@"1 character", model.p, nil);
+}
+
+- (void)testDynamicType {
+    SampleModel *model = [SampleModel model];
+    GHAssertEquals(NO, model.b, nil);
+    model.b = YES;
+    GHAssertEquals(YES, model.b, nil);
+
+    GHAssertEquals(0, model.i, nil);
+    model.i = 11;
+    GHAssertEquals(11, model.i, nil);
+
+    GHAssertEquals((short)0, model.s, nil);
+    model.s = 12;
+    GHAssertEquals((short)12, model.s, nil);
+
+    GHAssertEquals((long)0, model.l, nil);
+    model.l = 13;
+    GHAssertEquals((long)13, model.l, nil);
+
+    GHAssertEquals((long long)0, model.ll, nil);
+    model.ll = 14;
+    GHAssertEquals((long long)14, model.ll, nil);
+
+    GHAssertEquals((unsigned char)0, model.uc, nil);
+    model.uc = 15;
+    GHAssertEquals((unsigned char)15, model.uc, nil);
+
+    GHAssertEquals((unsigned)0, model.ui, nil);
+    model.ui = 16;
+    GHAssertEquals((unsigned)16, model.ui, nil);
+
+    GHAssertEquals((unsigned short)0, model.us, nil);
+    model.us = 17;
+    GHAssertEquals((unsigned short)17, model.us, nil);
+
+    GHAssertEquals((unsigned long)0, model.ul, nil);
+    model.ul = 18;
+    GHAssertEquals((unsigned long)18, model.ul, nil);
+
+    GHAssertEquals((unsigned long long)0, model.ull, nil);
+    model.ull = 19;
+    GHAssertEquals((unsigned long long)19, model.ull, nil);
+
+    GHAssertEquals((float)0.0, model.f, nil);
+    model.f = 1.1;
+    GHAssertEquals((float)1.1, model.f, nil);
+
+    GHAssertEquals((double)0, model.d, nil);
+    model.d = 2.2;
+    GHAssertEquals((double)2.2, model.d, nil);
 }
 
 @end

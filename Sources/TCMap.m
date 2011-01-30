@@ -99,6 +99,27 @@
     }
 }
 
+- (void)setCString:(char *)value forKey:(id)key {
+    [self setCString:value forKey:key keep:NO];
+}
+
+- (void)setCString:(char *)value forKey:(id)key keep:(BOOL)keep {
+    NSData *keyData = [self dataFromKey:key];
+    if (keep) {
+        tcmapputkeep(
+            map,
+            [keyData bytes], [keyData length],
+            value, strlen(value)
+        );
+    } else {
+        tcmapput(
+            map,
+            [keyData bytes], [keyData length],
+            value, strlen(value)
+        );
+    }
+}
+
 - (void)catObject:(id)value forKey:(id)key {
     NSData *keyData = [self dataFromKey:key];
     NSData *valueData = [self dataFromObject:value];

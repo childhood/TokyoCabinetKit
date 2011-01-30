@@ -49,9 +49,6 @@
 }
 
 - (NSString *)description {
-    NSMutableString *str = [NSMutableString string];
-    NSString *key;
-
     return [NSString stringWithFormat:@"<TCTableDB - record number: %llu file size: %llu>",
             [self count], [self size]];
 }

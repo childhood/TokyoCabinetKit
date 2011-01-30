@@ -19,15 +19,14 @@
 }
 
 - (NSData *)dataFromObject:(id)object {
-    return [(NSString *)object dataUsingEncoding:NSUTF8StringEncoding];
-    //return object ? [NSData dataWithBytes:&object length:sizeof(id *)] : nil;
-    //return [NSKeyedArchiver archivedDataWithRootObject:object];
+    if ([object isKindOfClass:[NSString class]])
+        return [(NSString *)object dataUsingEncoding:NSUTF8StringEncoding];
+    else
+        return [[object encodeForTC] dataUsingEncoding:NSUTF8StringEncoding];
 }
 
 - (id)objectFromData:(NSData *)data {
     return [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-    //return [data bytes] ? *((id *)[data bytes]) : nil;
-    //return [NSKeyedUnarchiver unarchiveObjectWithData:data];
 }
 
 - (id)objectFromBytes:(const void *)bytes length:(NSInteger)size {

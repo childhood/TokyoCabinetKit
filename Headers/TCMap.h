@@ -23,6 +23,8 @@
 
 - (void)setObject:(id)value forKey:(id)key;
 - (void)setObject:(id)value forKey:(id)key keep:(BOOL)keep;
+- (void)setCString:(char *)value forKey:(id)key;
+- (void)setCString:(char *)value forKey:(id)key keep:(BOOL)keep;
 - (void)catObject:(id)value forKey:(id)key;
 - (void)removeObjectForKey:(id)key;
 - (id)objectForKey:(id)key;
