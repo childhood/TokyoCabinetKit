@@ -4,6 +4,7 @@
 
 @interface TableDBTest : GHTestCase {
     TCTableDB *tdb;
+    NSString *path;
 }
 
 @end
@@ -18,11 +19,10 @@
 - (void)setUpClass {
     // Run at start of all tests in the class
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *path = [NSString stringWithFormat:@"%@/tctdb.tct", [paths objectAtIndex:0]];
+    path = [NSString stringWithFormat:@"%@/tctdb.tct", [paths objectAtIndex:0]];
     GHTestLog(@"path: %@", path);
     NSError *error;
     [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
-    tdb = [TCTableDB dbWithFile:path];
 }
 
 - (void)tearDownClass {
@@ -39,7 +39,10 @@
 }
 
 - (void)testStoreAndSearch {
-    [tdb removeAllObjects];
+    tdb = [[TCTableDB alloc] initWithFile:path
+                                     mode:TCTableDBOpenModeWriter |
+                                          TCTableDBOpenModeCreate |
+                                          TCTableDBOpenModeTruncate];
 
     NSString *key = [NSString stringWithFormat:@"%ld", (long)[tdb generateUniqueId]];
     TCMap *cols = [TCMap map];
@@ -59,6 +62,12 @@
     GHAssertEquals((uint64_t)2, tdb.count, nil);
 
     [tdb setMapFromTabSeparatedString:@"name\tjoker\tage\t19\tlang\ten,es" forKey:@"abcde"];
+
+    GHAssertEquals((uint64_t)3, tdb.count, nil);
+
+    [tdb sync];
+    [tdb release];
+    tdb = [[TCTableDB alloc] initWithFile:path];
 
     GHAssertEquals((uint64_t)3, tdb.count, nil);
 
@@ -113,10 +122,15 @@
     cols = [maps objectAtIndex:0];
     GHTestLog(@"match 0: %@", cols);
     GHAssertEqualStrings(@"joker", [cols objectForKey:@"name"], nil);
+
+    [tdb release];
 }
 
 - (void)testFullTextSearch {
-    [tdb removeAllObjects];
+    tdb = [[TCTableDB alloc] initWithFile:path
+                                     mode:TCTableDBOpenModeWriter |
+                                          TCTableDBOpenModeCreate |
+                                          TCTableDBOpenModeTruncate];
 
     NSString *key = [NSString stringWithFormat:@"%ld", (long)[tdb generateUniqueId]];
     TCMap *cols = [TCMap map];
@@ -170,6 +184,8 @@
     GHAssertEquals((NSUInteger)1, maps.count, nil);
     cols = [maps objectAtIndex:0];
     GHAssertEqualStrings(@"yatsu", [cols objectForKey:@"name"], nil);
+
+    [tdb release];
 }
 
 @end

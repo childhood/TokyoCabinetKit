@@ -20,7 +20,9 @@
     if ((self = [super init])) {
         tdb = tctdbnew();
         if (!tctdbopen(tdb, [file UTF8String],
-                       TCTableDBOpenModeWriter | TCTableDBOpenModeCreate)) {
+                       TCTableDBOpenModeReader |
+                       TCTableDBOpenModeWriter |
+                       TCTableDBOpenModeCreate)) {
             NSLog(@"tdb open error: %s\n", tctdberrmsg(self.ecode));
         }
     }

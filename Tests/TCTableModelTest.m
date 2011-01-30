@@ -23,6 +23,7 @@
 @property (nonatomic, assign) unsigned long long ull;
 @property (nonatomic, assign) float f;
 @property (nonatomic, assign) double d;
+@property (nonatomic, assign) NSInteger nsi;
 
 @end
 
@@ -32,11 +33,7 @@
 
 @dynamic prop;
 @dynamic p;
-@dynamic b, i, s, l, ll, uc, ui, us, ul, ull, f, d;
-
-+ (id)model {
-    return [[[[self class] alloc] init] autorelease];
-}
+@dynamic b, i, s, l, ll, uc, ui, us, ul, ull, f, d, nsi;
 
 - (id)init {
     if ((self = [super init])) {
@@ -54,6 +51,7 @@
 @end
 
 @interface TCTableModelTest : GHTestCase {
+    NSString *path;
 }
 
 @end
@@ -67,14 +65,16 @@
 
 - (void)setUpClass {
     // Run at start of all tests in the class
+    [SampleModel close];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *path = [NSString stringWithFormat:@"%@/SampleModel.tct", [paths objectAtIndex:0]];
-    NSError *error;
-    [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
+    path = [NSString stringWithFormat:@"%@/SampleModel.tct", [paths objectAtIndex:0]];
+    [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
 }
 
 - (void)tearDownClass {
     // Run at end of all tests in the class
+    [SampleModel close];
+    [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
 }
 
 - (void)setUp {
@@ -132,7 +132,8 @@
 }
 
 - (void)testDynamicType {
-    SampleModel *model = [SampleModel model];
+    SampleModel *model = [[SampleModel alloc] init];
+    GHAssertNil(model.key, nil);
     GHAssertEquals(NO, model.b, nil);
     model.b = YES;
     GHAssertEquals(YES, model.b, nil);
@@ -180,6 +181,24 @@
     GHAssertEquals((double)0, model.d, nil);
     model.d = 2.2;
     GHAssertEquals((double)2.2, model.d, nil);
+
+    GHAssertEquals((NSInteger)0, model.nsi, nil);
+    model.nsi = 20;
+    GHAssertEquals((NSInteger)20, model.nsi, nil);
+
+    [model save];
+    NSString *key = [model.key retain];
+    [model release];
+    model = nil;
+
+    [SampleModel sync];
+    [SampleModel close];
+
+    model = [SampleModel findByKey:key];
+    GHAssertEqualStrings(key, model.key, nil);
+    GHAssertEquals((NSInteger)20, model.nsi, nil);
+
+    [key release];
 }
 
 @end

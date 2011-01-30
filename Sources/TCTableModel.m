@@ -12,6 +12,10 @@ static TCTableDB *tdb_ = nil;
 
 #pragma mark Class Methods
 
++ (id)model {
+    return [[[[self class] alloc] init] autorelease];
+}
+
 + (TCTableDB *)tdb {
     @synchronized(self) {
         if (!tdb_) {
@@ -21,14 +25,19 @@ static TCTableDB *tdb_ = nil;
             );
             NSString *path = [NSString stringWithFormat:@"%@/%s.tct",
                               [paths objectAtIndex:0], clsName];
-            //NSLog(@"path: %@", path);
             tdb_ = [[TCTableDB alloc] initWithFile:path
-                                             mode:TCTableDBOpenModeWriter |
-                                                  TCTableDBOpenModeCreate];
+                                             mode:TCTableDBOpenModeReader |
+                                                  TCTableDBOpenModeWriter |
+                                                  TCTableDBOpenModeCreate
+                   ];
             [tdb_ setMutex];
         }
     }
     return tdb_;
+}
+
++ (void)sync {
+    if (tdb_) [tdb_ sync];
 }
 
 + (void)close {
@@ -41,13 +50,25 @@ static TCTableDB *tdb_ = nil;
 }
 
 + (NSString *)generateKey {
-    return [NSString stringWithFormat:@"lld", [[[self class] tdb] generateUniqueId]];
+    return [NSString stringWithFormat:@"%lld", [[[self class] tdb] generateUniqueId]];
+}
+
++ (id)findByKey:(NSString *)aKey {
+    return [[[[self class] alloc] initWithFindingByKey:aKey] autorelease];
 }
 
 #pragma mark NSObject
 
 - (id)init {
     if ((self = [super init])) {
+    }
+    return self;
+}
+
+- (id)initWithFindingByKey:(NSString *)aKey {
+    if ((self = [super init])) {
+        self.key = aKey;
+        self.map = [[[self class] tdb] mapForKey:aKey];
     }
     return self;
 }
@@ -64,7 +85,7 @@ static TCTableDB *tdb_ = nil;
 - (TCMap *)map {
     if (map) return map;
 
-    TCTableDB *db = [TCTableModel tdb];
+    TCTableDB *db = [[self class] tdb];
     if (key)
         map = [[db mapForKey:key] retain];
     else
@@ -84,7 +105,7 @@ static TCTableDB *tdb_ = nil;
 - (void)assignKey {
     @synchronized(self) {
         if (!key)
-            self.key = [TCTableModel generateKey];
+            self.key = [[self class] generateKey];
     }
 }
 
