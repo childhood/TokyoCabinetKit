@@ -1,6 +1,40 @@
 #import <objc/runtime.h>
 #import <GHUnit/GHUnit.h>
-#import <TokyoCabinet/TCTableModel.h>
+#import <TokyoCabinet/TokyoCabinet.h>
+
+@interface Foo : NSObject <TCTableModel>
+{
+    int val;
+}
+
+@property (nonatomic, assign) int val;
+
+@end
+
+@implementation Foo
+
+@synthesize val;
+
+- (id)initWithVal:(int)aVal {
+    if ((self = [super init])) {
+        self.val = aVal;
+    }
+    return self;
+}
+
++ (id)decodeFromTC:(NSString *)str {
+    Foo *f = nil;
+    if (str) {
+        f = [[[[self class] alloc] initWithVal:[str intValue]] autorelease];
+    }
+    return f;
+}
+
+- (NSString *)encodeForTC {
+    return [NSString stringWithFormat:@"%d", val];
+}
+
+@end
 
 @interface SampleModel : TCTableModel {
 @private
@@ -24,6 +58,7 @@
 @property (nonatomic, assign) float f;
 @property (nonatomic, assign) double d;
 @property (nonatomic, assign) NSInteger nsi;
+@property (nonatomic, assign) Foo *foo;
 
 @end
 
@@ -34,6 +69,7 @@
 @dynamic prop;
 @dynamic p;
 @dynamic b, i, s, l, ll, uc, ui, us, ul, ull, f, d, nsi;
+@dynamic foo;
 
 - (id)init {
     if ((self = [super init])) {
@@ -199,6 +235,13 @@
     GHAssertEquals((NSInteger)20, model.nsi, nil);
 
     [key release];
+}
+
+- (void)testCustomClass {
+    SampleModel *model = [[SampleModel alloc] init];
+    GHAssertNil(model.foo, nil);
+    model.foo = [[[Foo alloc] initWithVal:3] autorelease];
+    GHAssertEquals(3, model.foo.val, nil);
 }
 
 @end

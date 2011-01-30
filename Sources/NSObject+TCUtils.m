@@ -1,6 +1,6 @@
 #import "TCInternal.h"
 #import "NSObject+TCUtils.h"
-#import "NSObject+TokyoCabinet.h"
+#import "NSObject+TCTableModel.h"
 
 @implementation NSObject (TCUtils)
 

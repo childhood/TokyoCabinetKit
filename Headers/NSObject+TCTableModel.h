@@ -1,4 +1,4 @@
-@interface NSObject (TokyoCabinet)
+@interface NSObject (TCTableModel)
 
 + (id)decodeFromTC:(NSString *)str;
 - (NSString *)encodeForTC;

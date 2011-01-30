@@ -1,7 +1,7 @@
 #import <objc/runtime.h>
 #import <objc/message.h>
 #import "TCInternal.h"
-#import "NSObject+TokyoCabinet.h"
+#import "NSObject+TCTableModel.h"
 #import "TCTableModel.h"
 
 static TCTableDB *tdb_ = nil;

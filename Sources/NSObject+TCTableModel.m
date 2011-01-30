@@ -1,6 +1,6 @@
-#import "NSObject+TokyoCabinet.h"
+#import "NSObject+TCTableModel.h"
 
-@implementation NSObject (TokyoCabinet)
+@implementation NSObject (TCTableModel)
 
 + (id)decodeFromTC:(NSString *)str {
     return nil;
@@ -12,7 +12,7 @@
 
 @end
 
-@implementation NSString (TokyoCabinet)
+@implementation NSString (TCTableModel)
 
 + (id)decodeFromTC:(NSString *)str {
     return str;
