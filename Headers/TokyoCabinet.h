@@ -1,5 +1,5 @@
-#import "TokyoCabinet/NSObject+TokyoCabinet.h"
-#import "TokyoCabinet/TCModel.h"
+#import "TokyoCabinet/NSObject+TCTableModel.h"
+#import "TokyoCabinet/TCTableModel.h"
 
 @protocol TCTableModel <NSObject>
 
