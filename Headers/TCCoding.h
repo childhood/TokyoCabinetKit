@@ -1,4 +1,4 @@
-@interface NSObject (TCTableModel)
+@protocol TCCoding <NSObject>
 
 + (id)decodeFromTC:(NSString *)str;
 - (NSString *)encodeForTC;

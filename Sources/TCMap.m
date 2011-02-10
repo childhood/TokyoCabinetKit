@@ -63,25 +63,24 @@
 }
 
 - (NSString *)description {
-    NSMutableString *str = [NSMutableString string];
-    NSString *key;
+    //NSMutableString *str = [NSMutableString string];
+    //[self iteratorInit];
+    //while ((NSString *key = [self iteratorNext])) {
+    //    if (str.length > 0) [str appendString:@", "];
+    //    [str appendFormat:@"<%@: %@>", key, [self objectForKey:key]];
+    //}
+    //return [NSString stringWithFormat:@"<TCMap: %@>", str];
 
-    [self iteratorInit];
-    while ((key = [self iteratorNext])) {
-        if (str.length > 0) [str appendString:@", "];
-        [str appendFormat:@"<%@: %@>", key, [self objectForKey:key]];
-    }
-
-    return [NSString stringWithFormat:@"<TCMap: %@>", str];
+    return [NSString stringWithFormat:@"<TCMap: count: %d>", self.count];
 }
 
 #pragma mark Public Methods
 
-- (void)setObject:(id)value forKey:(id)key {
+- (void)setObject:(NSString *)value forKey:(NSString *)key {
     [self setObject:value forKey:key keep:NO];
 }
 
-- (void)setObject:(id)value forKey:(id)key keep:(BOOL)keep {
+- (void)setObject:(NSString *)value forKey:(NSString *)key keep:(BOOL)keep {
     NSData *keyData = [self dataFromKey:key];
     NSData *valueData = [self dataFromObject:value];
     if (keep) {
@@ -99,11 +98,11 @@
     }
 }
 
-- (void)setCString:(char *)value forKey:(id)key {
+- (void)setCString:(char *)value forKey:(NSString *)key {
     [self setCString:value forKey:key keep:NO];
 }
 
-- (void)setCString:(char *)value forKey:(id)key keep:(BOOL)keep {
+- (void)setCString:(char *)value forKey:(NSString *)key keep:(BOOL)keep {
     NSData *keyData = [self dataFromKey:key];
     if (keep) {
         tcmapputkeep(
@@ -120,7 +119,7 @@
     }
 }
 
-- (void)catObject:(id)value forKey:(id)key {
+- (void)catObject:(NSString *)value forKey:(NSString *)key {
     NSData *keyData = [self dataFromKey:key];
     NSData *valueData = [self dataFromObject:value];
     tcmapputcat(
@@ -130,19 +129,19 @@
     );
 }
 
-- (void)removeObjectForKey:(id)key {
+- (void)removeObjectForKey:(NSString *)key {
     NSData *keyData = [self dataFromKey:key];
     tcmapout(map, [keyData bytes], [keyData length]);
 }
 
-- (id)objectForKey:(id)key {
+- (NSString *)objectForKey:(NSString *)key {
     NSData *keyData = [self dataFromKey:key];
     int size;
     const void *bytes = tcmapget(map, [keyData bytes], [keyData length], &size);
     return bytes ? [self objectFromBytes:bytes length:size] : nil;
 }
 
-- (BOOL)moveObjectForKey:(id)key toHead:(BOOL)head {
+- (BOOL)moveObjectForKey:(NSString *)key toHead:(BOOL)head {
     NSData *keyData = [self dataFromKey:key];
     return tcmapmove(map, [keyData bytes], [keyData length], head);
 }
@@ -173,12 +172,12 @@
     return [TCList listWithInternalList:tcmapvals(map)];
 }
 
-- (int)addInteger:(int)value forKey:(id)key {
+- (int)addInteger:(int)value forKey:(NSString *)key {
     NSData *keyData = [self dataFromKey:key];
     return tcmapaddint(map, [keyData bytes], [keyData length], value);
 }
 
-- (double)addDouble:(double)value forKey:(id)key {
+- (double)addDouble:(double)value forKey:(NSString *)key {
     NSData *keyData = [self dataFromKey:key];
     return tcmapadddouble(map, [keyData bytes], [keyData length], value);
 }
@@ -207,18 +206,40 @@
 
 #pragma mark NSKeyValueCoding
 
-- (void)setValue:(id)value forKey:(NSString *)key {
+- (void)setValue:(id)value forKey:(id)key {
     if (value)
         [self setObject:value forKey:key];
     else
         [self removeObjectForKey:key];
 }
 
-- (id)valueForKey:(NSString *)key {
+- (id)valueForKey:(id)key {
     if ([[key substringToIndex:1] isEqualToString:@"@"])
         return [super valueForKey:[key substringFromIndex:1]];
     else
         return [self objectForKey:key];
+}
+
+#pragma mark NSFastEnumeration
+
+- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state
+                                  objects:(id *)stackbuf
+                                    count:(NSUInteger)len {
+    if (state->state >= self.count)
+        return 0;
+
+    TCList *keys = self.allKeys;
+    int count = 0;
+    while (state->state < keys.count && count < len) {
+        stackbuf[count] = [keys objectAtIndex:state->state];
+        count += 1;
+        state->state += 1;
+    }
+
+    state->itemsPtr = stackbuf;
+    state->mutationsPtr = (unsigned long *)keys;
+
+    return count;
 }
 
 @end

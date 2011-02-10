@@ -21,11 +21,13 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		1C02310712FD85C9006BF4CF /* ListTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C02310612FD85C9006BF4CF /* ListTest.m */; };
+		1C02310B12FD8725006BF4CF /* NSObject+TCCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C02310A12FD8725006BF4CF /* NSObject+TCCoding.m */; };
+		1C02310E12FD8733006BF4CF /* NSObject+TCCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C02310C12FD8733006BF4CF /* NSObject+TCCoding.h */; };
+		1C02310F12FD8733006BF4CF /* TCCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C02310D12FD8733006BF4CF /* TCCoding.h */; };
 		1C1774B112E3141300ED2569 /* TCInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C1774B012E3141300ED2569 /* TCInternal.h */; };
 		1C1774D312E32EF200ED2569 /* TCList.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C1774D212E32EF200ED2569 /* TCList.h */; };
 		1C1774D512E32EF900ED2569 /* TCList.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1774D412E32EF900ED2569 /* TCList.m */; };
-		1C1E813012F5918700EE3212 /* NSObject+TCTableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1E812F12F5918700EE3212 /* NSObject+TCTableModel.m */; };
-		1C1E813212F5919300EE3212 /* NSObject+TCTableModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C1E813112F5919300EE3212 /* NSObject+TCTableModel.h */; };
 		1C231E5712F1A23D002D9D57 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C231E5612F1A23D002D9D57 /* libz.dylib */; };
 		1C231E5912F1A24B002D9D57 /* libbz2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C231E5812F1A24B002D9D57 /* libbz2.dylib */; };
 		1C637DEF12EB3E9000FAF541 /* MapTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C637DEE12EB3E9000FAF541 /* MapTest.m */; };
@@ -73,11 +75,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C02310612FD85C9006BF4CF /* ListTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListTest.m; sourceTree = "<group>"; };
+		1C02310A12FD8725006BF4CF /* NSObject+TCCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TCCoding.m"; sourceTree = "<group>"; };
+		1C02310C12FD8733006BF4CF /* NSObject+TCCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TCCoding.h"; sourceTree = "<group>"; };
+		1C02310D12FD8733006BF4CF /* TCCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCCoding.h; sourceTree = "<group>"; };
 		1C1774B012E3141300ED2569 /* TCInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCInternal.h; sourceTree = "<group>"; };
 		1C1774D212E32EF200ED2569 /* TCList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCList.h; sourceTree = "<group>"; };
 		1C1774D412E32EF900ED2569 /* TCList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCList.m; sourceTree = "<group>"; };
-		1C1E812F12F5918700EE3212 /* NSObject+TCTableModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TCTableModel.m"; sourceTree = "<group>"; };
-		1C1E813112F5919300EE3212 /* NSObject+TCTableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TCTableModel.h"; sourceTree = "<group>"; };
 		1C231E5612F1A23D002D9D57 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		1C231E5812F1A24B002D9D57 /* libbz2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.dylib; path = usr/lib/libbz2.dylib; sourceTree = SDKROOT; };
 		1C637DEE12EB3E9000FAF541 /* MapTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapTest.m; sourceTree = "<group>"; };
@@ -203,8 +207,9 @@
 		1CADD72F12E04C2800E9CB02 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				1C02310C12FD8733006BF4CF /* NSObject+TCCoding.h */,
 				1CC4C9EE12F5203100C06772 /* TokyoCabinet.h */,
-				1C1E813112F5919300EE3212 /* NSObject+TCTableModel.h */,
+				1C02310D12FD8733006BF4CF /* TCCoding.h */,
 				1C1774D212E32EF200ED2569 /* TCList.h */,
 				1CADD97E12E19E1100E9CB02 /* TCMap.h */,
 				1CF102E612E5C50300946C15 /* TCTableDBQuery.h */,
@@ -225,7 +230,7 @@
 			children = (
 				1CA77ADE12F2843A008C3E06 /* bzlib.h */,
 				1C1774B012E3141300ED2569 /* TCInternal.h */,
-				1C1E812F12F5918700EE3212 /* NSObject+TCTableModel.m */,
+				1C02310A12FD8725006BF4CF /* NSObject+TCCoding.m */,
 				1CADD9BB12E2706E00E9CB02 /* NSObject+TCUtils.h */,
 				1CADD9BC12E2706E00E9CB02 /* NSObject+TCUtils.m */,
 				1C1774D412E32EF900ED2569 /* TCList.m */,
@@ -252,6 +257,7 @@
 			children = (
 				1CADD84312E0794600E9CB02 /* GHUnitIOSTestMain.m */,
 				1CF102FD12E5CD5600946C15 /* LowLevelTableDBTest.m */,
+				1C02310612FD85C9006BF4CF /* ListTest.m */,
 				1C637DEE12EB3E9000FAF541 /* MapTest.m */,
 				1CADD83D12E078BE00E9CB02 /* TableDBTest.m */,
 				1CC4C9B412F2F9DF00C06772 /* TCTableModelTest.m */,
@@ -293,7 +299,8 @@
 				1CA77AAD12F270F4008C3E06 /* TCTableModel.h in Headers */,
 				1CA77ADF12F2843A008C3E06 /* bzlib.h in Headers */,
 				1CC4C9EF12F5203100C06772 /* TokyoCabinet.h in Headers */,
-				1C1E813212F5919300EE3212 /* NSObject+TCTableModel.h in Headers */,
+				1C02310E12FD8733006BF4CF /* NSObject+TCCoding.h in Headers */,
+				1C02310F12FD8733006BF4CF /* TCCoding.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +404,7 @@
 				1CF102FE12E5CD5600946C15 /* LowLevelTableDBTest.m in Sources */,
 				1C637DEF12EB3E9000FAF541 /* MapTest.m in Sources */,
 				1CC4C9B512F2F9DF00C06772 /* TCTableModelTest.m in Sources */,
+				1C02310712FD85C9006BF4CF /* ListTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,7 +426,7 @@
 				1C1774D512E32EF900ED2569 /* TCList.m in Sources */,
 				1CF102F012E5C55000946C15 /* TCTableDBQuery.m in Sources */,
 				1CA77AAF12F27102008C3E06 /* TCTableModel.m in Sources */,
-				1C1E813012F5918700EE3212 /* NSObject+TCTableModel.m in Sources */,
+				1C02310B12FD8725006BF4CF /* NSObject+TCCoding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

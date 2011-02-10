@@ -1,7 +1,8 @@
 #import <Foundation/Foundation.h>
+#import <TokyoCabinet/TCCoding.h>
 #import <TokyoCabinet/tcutil.h>
 
-@interface TCList : NSObject <NSCoding> {
+@interface TCList : NSObject <NSCoding, NSFastEnumeration> {
 @private
     TCLIST *list;
 }
@@ -19,16 +20,16 @@
 - (id)initWithInternalList:(TCLIST *)aList;
 
 - (int)count;
-- (id)objectAtIndex:(int)index;
-- (void)addObject:(id)object;
-- (id)popObject;
-- (void)unshiftObject:(id)object;
-- (id)shiftObject;
-- (void)insertObject:(id)object atIndex:(int)index;
+- (NSString *)objectAtIndex:(int)index;
+- (void)addObject:(NSString *)object;
+- (NSString *)popObject;
+- (void)unshiftObject:(NSString *)object;
+- (NSString *)shiftObject;
+- (void)insertObject:(NSString *)object atIndex:(int)index;
 - (void)removeObjectAtIndex:(int)index;
-- (void)replaceObjectAtIndex:(int)index withObject:(id)object;
+- (void)replaceObjectAtIndex:(int)index withObject:(NSString *)object;
 - (void)sort;
-- (int)indexOfObject:(id)object;
+- (int)indexOfObject:(NSString *)object;
 - (int)linearSearch:(NSString *)object;
 - (int)binarySearch:(NSString *)object;
 - (void)removeAllObjects;

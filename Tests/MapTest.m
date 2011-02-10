@@ -165,4 +165,46 @@ int myrand(int range) {
     GHAssertNil([map valueForKey:@"property"], nil);
 }
 
+- (void)testEnumeration {
+    TCMap *map = [TCMap map];
+    [map setValue:@"AAA" forKey:@"aaa"];
+    [map setValue:@"CCC" forKey:@"ccc"];
+    [map setValue:@"BBB" forKey:@"bbb"];
+    [map setValue:@"EEE" forKey:@"eee"];
+    [map setValue:@"DDD" forKey:@"ddd"];
+    [map setValue:@"FFF" forKey:@"fff"];
+
+    int i = 0;
+    for (NSString *key in map) {
+        //GHTestLog(@"key: %@", key);
+        switch (i) {
+            case 0:
+                GHAssertEqualStrings(@"aaa", key, nil);
+                GHAssertEqualStrings(@"AAA", [map valueForKey:key], nil);
+                break;
+            case 1:
+                GHAssertEqualStrings(@"ccc", key, nil);
+                GHAssertEqualStrings(@"CCC", [map valueForKey:key], nil);
+                break;
+            case 2:
+                GHAssertEqualStrings(@"bbb", key, nil);
+                GHAssertEqualStrings(@"BBB", [map valueForKey:key], nil);
+                break;
+            case 3:
+                GHAssertEqualStrings(@"eee", key, nil);
+                GHAssertEqualStrings(@"EEE", [map valueForKey:key], nil);
+                break;
+            case 4:
+                GHAssertEqualStrings(@"ddd", key, nil);
+                GHAssertEqualStrings(@"DDD", [map valueForKey:key], nil);
+                break;
+            case 5:
+                GHAssertEqualStrings(@"fff", key, nil);
+                GHAssertEqualStrings(@"FFF", [map valueForKey:key], nil);
+                break;
+        }
+        i++;
+    }
+}
+
 @end

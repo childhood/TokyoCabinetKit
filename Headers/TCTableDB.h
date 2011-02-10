@@ -21,6 +21,14 @@ typedef enum {
     TCTableDBIndexQGram   = TDBITQGRAM
 } TCTableDBIndexType;
 
+typedef enum {
+    TCTableDBOptionLarge   = TDBTLARGE,    /* use 64-bit bucket array */
+    TCTableDBOptionDeflate = TDBTDEFLATE,  /* compress each page with Deflate */
+    TCTableDBOptionBzip    = TDBTBZIP,     /* compress each record with BZIP2 */
+    TCTableDBOptionTCBS    = TDBTTCBS,     /* compress each page with TCBS */
+    TCTableDBOptionExCodec = TDBTEXCODEC   /* compress each record with outer functions */
+} TCTableDBOption;
+
 @interface TCTableDB : NSObject {
 @private
     TCTDB *tdb;

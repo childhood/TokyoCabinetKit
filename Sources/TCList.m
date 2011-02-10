@@ -71,43 +71,43 @@
     return tclistnum(list);
 }
 
-- (id)objectAtIndex:(int)index {
+- (NSString *)objectAtIndex:(int)index {
     return [NSString stringWithUTF8String:tclistval2(list, index)];
 }
 
-- (void)addObject:(id)object {
-    tclistpush2(list, [(NSString *)object UTF8String]);
+- (void)addObject:(NSString *)object {
+    tclistpush2(list, [object UTF8String]);
 }
 
-- (id)popObject {
+- (NSString *)popObject {
     return [NSString stringWithUTF8String:tclistpop2(list)];
 }
 
-- (void)unshiftObject:(id)object {
-    tclistunshift2(list, [(NSString *)object UTF8String]);
+- (void)unshiftObject:(NSString *)object {
+    tclistunshift2(list, [object UTF8String]);
 }
 
-- (id)shiftObject {
+- (NSString *)shiftObject {
     return [NSString stringWithUTF8String:tclistshift2(list)];
 }
 
-- (void)insertObject:(id)object atIndex:(int)index {
-    tclistinsert2(list, index, [(NSString *)object UTF8String]);
+- (void)insertObject:(NSString *)object atIndex:(int)index {
+    tclistinsert2(list, index, [object UTF8String]);
 }
 
 - (void)removeObjectAtIndex:(int)index {
     tclistremove2(list, index);
 }
 
-- (void)replaceObjectAtIndex:(int)index withObject:(id)object {
-    tclistover2(list, index, [(NSString *)object UTF8String]);
+- (void)replaceObjectAtIndex:(int)index withObject:(NSString *)object {
+    tclistover2(list, index, [object UTF8String]);
 }
 
 - (void)sort {
     tclistsort(list);
 }
 
-- (int)indexOfObject:(id)object {
+- (int)indexOfObject:(NSString *)object {
     return [self linearSearch:object];
 }
 
@@ -141,6 +141,27 @@
     NSData *data = [NSData dataWithBytes:bytes length:size];
     tcfree(bytes);
     [encoder encodeObject:data forKey:@"list"];
+}
+
+#pragma mark NSFastEnumeration
+
+- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state
+                                  objects:(id *)stackbuf
+                                    count:(NSUInteger)len {
+    if (state->state >= self.count)
+        return 0;
+
+    int count = 0;
+    while (state->state < self.count && count < len) {
+        stackbuf[count] = [self objectAtIndex:state->state];
+        count += 1;
+        state->state += 1;
+    }
+
+    state->itemsPtr = stackbuf;
+    state->mutationsPtr = (unsigned long *)self;
+
+    return count;
 }
 
 @end

@@ -2,8 +2,7 @@
 #import <GHUnit/GHUnit.h>
 #import <TokyoCabinet/TokyoCabinet.h>
 
-@interface Foo : NSObject <TCTableModel>
-{
+@interface Foo : NSObject <TCCoding> {
     int val;
 }
 
@@ -36,7 +35,17 @@
 
 @end
 
-@interface SampleModel : TCTableModel {
+@protocol SampleModel
+
+@optional
++ (id)findByProp:(NSString *)prop;
++ (id)findByFoo:(Foo *)foo;
++ (id)findByI:(int)i;
++ (id)findByD:(double)d;
+
+@end
+
+@interface SampleModel : TCTableModel <SampleModel> {
 @private
     NSString *regularProperty;
 }
@@ -45,19 +54,19 @@
 
 @property (nonatomic, assign) NSString *prop;
 @property (nonatomic, assign) NSString *p;
-@property (nonatomic, assign) BOOL b;
-@property (nonatomic, assign) int i;
-@property (nonatomic, assign) short s;
-@property (nonatomic, assign) long l;
-@property (nonatomic, assign) long long ll;
-@property (nonatomic, assign) unsigned char uc;
-@property (nonatomic, assign) unsigned int ui;
-@property (nonatomic, assign) unsigned short us;
-@property (nonatomic, assign) unsigned long ul;
-@property (nonatomic, assign) unsigned long long ull;
-@property (nonatomic, assign) float f;
-@property (nonatomic, assign) double d;
-@property (nonatomic, assign) NSInteger nsi;
+@property (nonatomic) BOOL b;
+@property (nonatomic) int i;
+@property (nonatomic) short s;
+@property (nonatomic) long l;
+@property (nonatomic) long long ll;
+@property (nonatomic) unsigned char uc;
+@property (nonatomic) unsigned int ui;
+@property (nonatomic) unsigned short us;
+@property (nonatomic) unsigned long ul;
+@property (nonatomic) unsigned long long ull;
+@property (nonatomic) float f;
+@property (nonatomic) double d;
+@property (nonatomic) NSInteger nsi;
 @property (nonatomic, assign) Foo *foo;
 
 @end
@@ -119,6 +128,8 @@
 
 - (void)tearDown {
     // Run after each test method
+    [SampleModel removeAllObjects];
+    [SampleModel close];
 }
 
 - (void)testTableDB {
@@ -242,6 +253,129 @@
     GHAssertNil(model.foo, nil);
     model.foo = [[[Foo alloc] initWithVal:3] autorelease];
     GHAssertEquals(3, model.foo.val, nil);
+}
+
+- (void)testSimpleFind {
+    SampleModel *model = [SampleModel model];
+    model.prop = @"aaa";
+    Foo *foo = [[[Foo alloc] initWithVal:5] autorelease];
+    model.foo = foo;
+    model.i = 5;
+    model.d = 3.7;
+    GHAssertEquals((uint64_t)0, [SampleModel count], nil);
+    [model save];
+    GHAssertEquals((uint64_t)1, [SampleModel count], nil);
+
+    [SampleModel tuneBnum:10 apow:-1 fpow:-1 opts:TCTableDBOptionDeflate];
+    [SampleModel close];
+
+    model = [SampleModel findByKey:@"1"];
+    GHAssertNotNil(model, nil);
+
+    model = [SampleModel find:@"aab" by:@"prop"];
+    GHAssertNil(model, nil);
+
+    model = [SampleModel find:@"aaa" by:@"prop"];
+    GHAssertNotNil(model, nil);
+
+    model = [SampleModel findByProp:@"aaa"];
+    GHAssertNotNil(model, nil);
+
+    model = [SampleModel find:foo by:@"foo"];
+    GHAssertNotNil(model, nil);
+
+    model = [SampleModel findByFoo:foo];
+    GHAssertNotNil(model, nil);
+
+    Foo *foo2 = [[[Foo alloc] initWithVal:7] autorelease];
+    model = [SampleModel findByFoo:foo2];
+    GHAssertNil(model, nil);
+
+    Foo *foo3 = [[[Foo alloc] initWithVal:5] autorelease];
+    model = [SampleModel findByFoo:foo3];
+    GHAssertNotNil(model, nil);
+
+    model = [SampleModel findByI:5];
+    GHAssertNotNil(model, nil);
+
+    model = [SampleModel findByI:3];
+    GHAssertNil(model, nil);
+
+    model = [SampleModel findInt:5 by:@"i"];
+    GHAssertNotNil(model, nil);
+
+    model = [SampleModel findInt:4 by:@"i"];
+    GHAssertNil(model, nil);
+
+    model = [SampleModel findByD:3.7];
+    GHAssertNotNil(model, nil);
+
+    model = [SampleModel findByD:3.2];
+    GHAssertNil(model, nil);
+
+    model = [SampleModel findDouble:3.7 by:@"d"];
+    GHAssertNotNil(model, nil);
+
+    model = [SampleModel findDouble:4.3 by:@"d"];
+    GHAssertNil(model, nil);
+}
+
+- (void)testQuery {
+    SampleModel *model = [SampleModel model];
+    model.prop = @"Hello";
+    model.foo = [[[Foo alloc] initWithVal:0] autorelease];
+    model.i = 5;
+    [model save];
+
+    model = [SampleModel model];
+    model.prop = @"aaa";
+    model.foo = [[[Foo alloc] initWithVal:1] autorelease];
+    model.i = 4;
+    [model save];
+
+    model = [SampleModel model];
+    model.prop = @"bbb";
+    model.foo = [[[Foo alloc] initWithVal:2] autorelease];
+    model.i = 3;
+    [model save];
+
+    model = [SampleModel model];
+    model.prop = @"ccc";
+    model.foo = [[[Foo alloc] initWithVal:3] autorelease];
+    model.i = 2;
+    [model save];
+
+    model = [SampleModel model];
+    model.prop = @"ddd";
+    model.foo = [[[Foo alloc] initWithVal:4] autorelease];
+    model.i = 1;
+    [model save];
+
+    model = [SampleModel model];
+    model.prop = @"eee";
+    model.foo = [[[Foo alloc] initWithVal:5] autorelease];
+    model.i = 0;
+    [model save];
+
+    GHAssertEquals((uint64_t)6, [SampleModel count], nil);
+
+    TCTableDBQuery *query = [TCTableDBQuery queryWithTableDB:[SampleModel tdb]];
+    [query addConditionForColumn:@"prop" stringIncludes:@"o"];
+    [query setOrder:TCTableDBQueryOrderNumberAsc forColumn:@"i"];
+    NSArray *models = [SampleModel search:query];
+    GHAssertEquals((NSUInteger)1, models.count, nil);
+    model = [models objectAtIndex:0];
+    GHAssertEqualStrings(@"Hello", model.prop, nil);
+
+    query = [TCTableDBQuery queryWithTableDB:[SampleModel tdb]];
+    [query addConditionForColumn:@"prop" stringIncludes:@"e"];
+    [query setOrder:TCTableDBQueryOrderNumberAsc forColumn:@"i"];
+    models = [SampleModel search:query];
+    GHAssertEquals((NSUInteger)2, models.count, nil);
+    model = [models objectAtIndex:0];
+    GHAssertEqualStrings(@"eee", model.prop, nil);
+    model = [models objectAtIndex:1];
+    GHAssertEqualStrings(@"Hello", model.prop, nil);
 }
 
 @end
