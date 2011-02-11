@@ -1,7 +1,6 @@
 #import "TCInternal.h"
 #import "TCTableDBQuery.h"
 #import "TCTableDB.h"
-#import "NSObject+TCUtils.h"
 #import "TCList.h"
 
 @implementation TCTableDBQuery

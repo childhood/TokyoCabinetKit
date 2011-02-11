@@ -1,8 +1,9 @@
 #import <Foundation/Foundation.h>
 #import <TokyoCabinet/TCCoding.h>
+#import <TokyoCabinet/TCObject.h>
 #import <TokyoCabinet/tcutil.h>
 
-@interface TCList : NSObject <NSCoding, NSFastEnumeration> {
+@interface TCList : TCObject <NSCoding, NSFastEnumeration> {
 @private
     TCLIST *list;
 }

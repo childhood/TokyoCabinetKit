@@ -1,0 +1,8 @@
+//
+// Prefix header for all source files of the 'Settings' target in the 'Settings' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+    #import <UIKit/UIKit.h>
+#endif

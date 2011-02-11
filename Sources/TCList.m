@@ -1,6 +1,5 @@
 #import "TCInternal.h"
 #import "TCList.h"
-#import "NSObject+TCUtils.h"
 
 @implementation TCList
 

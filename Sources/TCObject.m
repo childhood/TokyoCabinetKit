@@ -1,8 +1,8 @@
 #import "TCInternal.h"
-#import "NSObject+TCUtils.h"
-#import "NSObject+TCCoding.h"
+#import "NSString+TCCoding.h"
+#import "TCObject.h"
 
-@implementation NSObject (TCUtils)
+@implementation TCObject
 
 - (NSData *)dataFromKey:(id)key {
     NSData *data;
@@ -17,13 +17,6 @@
 
 - (NSData *)dataFromString:(NSString *)str {
     return [str dataUsingEncoding:NSUTF8StringEncoding];
-}
-
-- (NSData *)dataFromObject:(id)object {
-    if ([object isKindOfClass:[NSString class]])
-        return [(NSString *)object dataUsingEncoding:NSUTF8StringEncoding];
-    else
-        return [[object encodeForTC] dataUsingEncoding:NSUTF8StringEncoding];
 }
 
 - (id)objectFromData:(NSData *)data {

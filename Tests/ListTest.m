@@ -1,6 +1,6 @@
 #import <sys/time.h>
 #import <GHUnit/GHUnit.h>
-#import <TokyoCabinet/NSObject+TCCoding.h>
+#import <TokyoCabinet/NSString+TCCoding.h>
 #import <TokyoCabinet/TCList.h>
 
 @interface ListTest : GHTestCase {

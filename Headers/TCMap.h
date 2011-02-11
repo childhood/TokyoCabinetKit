@@ -1,9 +1,10 @@
 #import <Foundation/Foundation.h>
+#import <TokyoCabinet/TCObject.h>
 #import <TokyoCabinet/tcutil.h>
 
 @class TCList;
 
-@interface TCMap : NSObject <NSCoding, NSFastEnumeration> {
+@interface TCMap : TCObject <NSCoding, NSFastEnumeration> {
 @private
     TCMAP *map;
 }

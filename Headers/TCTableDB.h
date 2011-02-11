@@ -29,7 +29,7 @@ typedef enum {
     TCTableDBOptionExCodec = TDBTEXCODEC   /* compress each record with outer functions */
 } TCTableDBOption;
 
-@interface TCTableDB : NSObject {
+@interface TCTableDB : TCObject {
 @private
     TCTDB *tdb;
 }

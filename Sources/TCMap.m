@@ -1,7 +1,6 @@
 #import "TCInternal.h"
 #import "TCMap.h"
 #import "TCList.h"
-#import "NSObject+TCUtils.h"
 
 @implementation TCMap
 
@@ -82,7 +81,7 @@
 
 - (void)setObject:(NSString *)value forKey:(NSString *)key keep:(BOOL)keep {
     NSData *keyData = [self dataFromKey:key];
-    NSData *valueData = [self dataFromObject:value];
+    NSData *valueData = [self dataFromString:value];
     if (keep) {
         tcmapputkeep(
             map,
@@ -121,7 +120,7 @@
 
 - (void)catObject:(NSString *)value forKey:(NSString *)key {
     NSData *keyData = [self dataFromKey:key];
-    NSData *valueData = [self dataFromObject:value];
+    NSData *valueData = [self dataFromString:value];
     tcmapputcat(
         map,
         [keyData bytes], [keyData length],

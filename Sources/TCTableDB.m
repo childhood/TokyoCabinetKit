@@ -1,6 +1,5 @@
 #import "TCInternal.h"
 #import "TCTableDB.h"
-#import "NSObject+TCUtils.h"
 
 @implementation TCTableDB
 

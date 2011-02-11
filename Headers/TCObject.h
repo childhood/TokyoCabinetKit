@@ -1,10 +1,10 @@
 #import <Foundation/Foundation.h>
 
-@interface NSObject (TCUtils)
+@interface TCObject : NSObject {
+}
 
 - (NSData *)dataFromKey:(id)key;
 - (NSData *)dataFromString:(NSString *)str;
-- (NSData *)dataFromObject:(id)object;
 - (id)objectFromData:(NSData *)data;
 - (id)objectFromBytes:(const void *)bytes length:(NSInteger)size;
 - (NSString *)stringFromData:(NSData *)data;

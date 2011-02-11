@@ -1,8 +1,10 @@
 #import <Foundation/Foundation.h>
 #import <Foundation/NSKeyValueCoding.h>
+#import <TokyoCabinet/TCObject.h>
 #import <TokyoCabinet/TCTableDB.h>
+#import <TokyoCabinet/TCCoding.h>
 
-@interface TCTableModel : NSObject {
+@interface TCTableModel : TCObject {
 @private
     NSString *key;
     TCMap *map;

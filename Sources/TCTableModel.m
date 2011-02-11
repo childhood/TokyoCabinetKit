@@ -1,10 +1,22 @@
 #import <objc/runtime.h>
 #import <objc/message.h>
 #import "TCInternal.h"
-#import "NSObject+TCCoding.h"
+#import "NSString+TCCoding.h"
 #import "TCTableModel.h"
 
 static TCTableDB *tdb_ = nil;
+
+@implementation NSString (TCCoding)
+
++ (id)decodeFromTC:(NSString *)str {
+    return str;
+}
+
+- (NSString *)encodeForTC {
+    return self;
+}
+
+@end
 
 @implementation TCTableModel
 
@@ -442,7 +454,7 @@ static TCTableDB *tdb_ = nil;
     TCTableDB *db = [[self class] tdb];
     if (key)
         map = [[db mapForKey:key] retain];
-    else
+    if (!map)
         map = [[TCMap alloc] init];
 
     return map;

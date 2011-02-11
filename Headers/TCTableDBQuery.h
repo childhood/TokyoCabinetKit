@@ -1,4 +1,5 @@
 #import <Foundation/Foundation.h>
+#import <TokyoCabinet/TCObject.h>
 #import <TokyoCabinet/tctdb.h>
 
 typedef enum {
@@ -33,7 +34,7 @@ typedef enum {
 @class TCTableDB;
 @class TCList;
 
-@interface TCTableDBQuery : NSObject {
+@interface TCTableDBQuery : TCObject {
 @private
     TCTableDB *tdb;
     TDBQRY *query;
