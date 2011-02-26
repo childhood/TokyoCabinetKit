@@ -1,0 +1,17 @@
+#
+# this is your module manifest and used by Titanium
+# during compilation, packaging, distribution, etc.
+#
+version: 0.1
+description: TokyoCabinet module for Titanium Mobile
+author: Masaki Yatsu
+license: LGPL
+copyright: Copyright (c) 2010 Masaki Yatsu
+
+
+# these should not be edited
+name: titokyocabinet
+moduleid: com.valleyport.ti.tokyocabinet
+guid: bd88ad46-4c3f-4e03-a8bf-dc0f534d4c71
+platform: iphone
+minsdk: 1.6.0
