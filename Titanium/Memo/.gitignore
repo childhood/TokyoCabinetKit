@@ -1,2 +1,6 @@
-tmp
+*.xcodeproj/project.xcworkspace/xcuserdata/*.xcuserdatad
+*.xcodeproj/xcuserdata/*.xcuserdatad/
+*.xcodeproj/*.pbxuser
+*.xcodeproj/*.mode*
 build
+tmp
