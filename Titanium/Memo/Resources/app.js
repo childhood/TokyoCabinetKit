@@ -111,3 +111,12 @@ Ti.API.info("opened");
 //
 //tdb = TC.createTableDB("memo.tct", TC.TDBOWRITER, TC.TDBOCREAT);
 //Ti.API.info("tdb: " + tdb);
+
+tdb.set(1, { name: 'a', content: 'AAA' });
+tdb.set(2, { name: 'b', content: 'BBB' });
+tdb.set(3, { name: 'c', content: 'CCC' });
+
+Ti.API.info("a: " + tdb.get(1).content);
+Ti.API.info("b: " + tdb.get(2).content);
+Ti.API.info("c: " + tdb.get(3).content);
+Ti.API.info("d: " + tdb.get(4));

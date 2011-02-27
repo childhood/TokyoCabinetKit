@@ -45,4 +45,7 @@
 - (void)setValue:(id)value forKey:(id)key;
 - (id)valueForKey:(id)key;
 
++ (id)mapFromDictionary:(NSDictionary *)dict;
+- (NSDictionary *)dictionary;
+
 @end

@@ -241,4 +241,32 @@
     return count;
 }
 
+#pragma mark Conversion
+
++ (id)mapFromDictionary:(NSDictionary *)dict {
+    TCMap *map = [TCMap map];
+
+    for (NSString *key in dict) {
+        [map setObject:[dict objectForKey:key] forKey:key];
+    }
+
+    return map;
+}
+
+- (NSDictionary *)dictionary {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+
+    tcmapiterinit(map);
+    int keySize;
+    const void *keyBytes;
+    while ((keyBytes = tcmapiternext(map, &keySize))) {
+        int valSize;
+        const void *valBytes = tcmapget(map, keyBytes, keySize, &valSize);
+        [dict setObject:[NSString stringWithUTF8String:valBytes]
+                 forKey:[NSString stringWithUTF8String:keyBytes]];
+    }
+
+    return dict;
+}
+
 @end

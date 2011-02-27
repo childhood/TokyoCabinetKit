@@ -1,1 +1,1 @@
-OTHER_LDFLAGS=$(inherited) -F$(SRCROOT) -framework TokyoCabinet -lbz2 -lz
+OTHER_LDFLAGS=$(inherited) -F/Library/Application\ Support/Titanium/frameworks -F$(HOME)/Library/Application\ Support/Titanium/frameworks -framework TokyoCabinet -lbz2 -lz

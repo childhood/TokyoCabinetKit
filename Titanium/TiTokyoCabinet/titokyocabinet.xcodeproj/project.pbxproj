@@ -24,9 +24,9 @@
 /* Begin PBXBuildFile section */
 		1CBB25FD1318ECCD004793D3 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CBB25FC1318ECCD004793D3 /* libz.dylib */; };
 		1CBB25FF1318ECDB004793D3 /* libbz2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CBB25FE1318ECDB004793D3 /* libbz2.dylib */; };
-		1CBB265E13192778004793D3 /* TokyoCabinet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CBB265D13192778004793D3 /* TokyoCabinet.framework */; };
 		1CBB268D131A17F5004793D3 /* ComValleyportTiTokyocabinetTableDBProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CBB268B131A17F5004793D3 /* ComValleyportTiTokyocabinetTableDBProxy.h */; };
 		1CBB268E131A17F5004793D3 /* ComValleyportTiTokyocabinetTableDBProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CBB268C131A17F5004793D3 /* ComValleyportTiTokyocabinetTableDBProxy.m */; };
+		1CBB26F4131A47B4004793D3 /* TokyoCabinet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CBB26F3131A47B4004793D3 /* TokyoCabinet.framework */; };
 		24DD6CF91134B3F500162E58 /* ComValleyportTiTokyocabinetModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DD6CF71134B3F500162E58 /* ComValleyportTiTokyocabinetModule.h */; };
 		24DD6CFA1134B3F500162E58 /* ComValleyportTiTokyocabinetModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DD6CF81134B3F500162E58 /* ComValleyportTiTokyocabinetModule.m */; };
 		24DE9E1111C5FE74003F90F6 /* ComValleyportTiTokyocabinetModuleAssets.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DE9E0F11C5FE74003F90F6 /* ComValleyportTiTokyocabinetModuleAssets.h */; };
@@ -48,9 +48,9 @@
 /* Begin PBXFileReference section */
 		1CBB25FC1318ECCD004793D3 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		1CBB25FE1318ECDB004793D3 /* libbz2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.dylib; path = usr/lib/libbz2.dylib; sourceTree = SDKROOT; };
-		1CBB265D13192778004793D3 /* TokyoCabinet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TokyoCabinet.framework; path = "../../build/Release-framework/TokyoCabinet.framework"; sourceTree = SOURCE_ROOT; };
 		1CBB268B131A17F5004793D3 /* ComValleyportTiTokyocabinetTableDBProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComValleyportTiTokyocabinetTableDBProxy.h; sourceTree = "<group>"; };
 		1CBB268C131A17F5004793D3 /* ComValleyportTiTokyocabinetTableDBProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComValleyportTiTokyocabinetTableDBProxy.m; sourceTree = "<group>"; };
+		1CBB26F3131A47B4004793D3 /* TokyoCabinet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TokyoCabinet.framework; path = "/Library/Application Support/Titanium/frameworks/TokyoCabinet.framework"; sourceTree = "<absolute>"; };
 		24DD6CF71134B3F500162E58 /* ComValleyportTiTokyocabinetModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComValleyportTiTokyocabinetModule.h; sourceTree = "<group>"; };
 		24DD6CF81134B3F500162E58 /* ComValleyportTiTokyocabinetModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComValleyportTiTokyocabinetModule.m; sourceTree = "<group>"; };
 		24DD6D1B1134B66800162E58 /* titanium.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = titanium.xcconfig; sourceTree = "<group>"; };
@@ -69,7 +69,7 @@
 				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
 				1CBB25FD1318ECCD004793D3 /* libz.dylib in Frameworks */,
 				1CBB25FF1318ECDB004793D3 /* libbz2.dylib in Frameworks */,
-				1CBB265E13192778004793D3 /* TokyoCabinet.framework in Frameworks */,
+				1CBB26F4131A47B4004793D3 /* TokyoCabinet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,7 +98,7 @@
 		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1CBB265D13192778004793D3 /* TokyoCabinet.framework */,
+				1CBB26F3131A47B4004793D3 /* TokyoCabinet.framework */,
 				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
 				1CBB25FC1318ECCD004793D3 /* libz.dylib */,
 				1CBB25FE1318ECDB004793D3 /* libbz2.dylib */,
@@ -237,6 +237,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../build/Release-framework\"",
+					"\"$(LOCAL_LIBRARY_DIR)/Application Support/Titanium/frameworks\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -259,6 +260,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../build/Release-framework\"",
+					"\"$(LOCAL_LIBRARY_DIR)/Application Support/Titanium/frameworks\"",
 				);
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

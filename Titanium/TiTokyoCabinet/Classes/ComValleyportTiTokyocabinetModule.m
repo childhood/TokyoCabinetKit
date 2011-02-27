@@ -103,13 +103,13 @@ MAKE_SYSTEM_PROP_DBL(TDBOLCKNB, TDBOLCKNB);
 - (id)createTableDB:(id)args {
     ComValleyportTiTokyocabinetTableDBProxy *tdb;
 
-    if ([args count] >= 1) {
+    if ([(NSArray *)args count] >= 1) {
         id arg = [args objectAtIndex:0];
         ENSURE_STRING(arg);
         NSString *file = [TiUtils stringValue:arg];
 
         int mode;
-        if ([args count] >= 2) {
+        if ([(NSArray *)args count] >= 2) {
             arg = [args objectAtIndex:1];
             ENSURE_TYPE(arg, NSNumber);
             mode = [TiUtils intValue:arg];
