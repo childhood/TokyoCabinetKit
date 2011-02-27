@@ -7,12 +7,23 @@
 
 #pragma mark NSObject
 
++ (id)db {
+    return [[[TCTableDB alloc] init] autorelease];
+}
+
 + (id)dbWithFile:(NSString *)file {
     return [[[TCTableDB alloc] initWithFile:file] autorelease];
 }
 
 + (id)dbWithFile:(NSString *)file mode:(int)mode {
     return [[[TCTableDB alloc] initWithFile:file mode:mode] autorelease];
+}
+
+- (id)init {
+    if ((self = [super init])) {
+        tdb = tctdbnew();
+    }
+    return self;
 }
 
 - (id)initWithFile:(NSString *)file {
@@ -49,12 +60,39 @@
     [super dealloc];
 }
 
+#pragma mark Public Methods
+
 - (NSString *)description {
     return [NSString stringWithFormat:@"<TCTableDB - record number: %llu file size: %llu>",
             [self count], [self size]];
 }
 
-#pragma mark Public Methods
+- (int)open:(NSString *)file {
+    int error = tctdbopen(tdb, [file UTF8String],
+                          TCTableDBOpenModeReader |
+                          TCTableDBOpenModeWriter |
+                          TCTableDBOpenModeCreate);
+    if (!error)
+        NSLog(@"tdb open error: %s\n", tctdberrmsg(self.ecode));
+
+    return error;
+}
+
+- (int)open:(NSString *)file mode:(int)mode {
+    int error = tctdbopen(tdb, [file UTF8String], mode);
+    if (!error)
+        NSLog(@"tdb open error: %s\n", tctdberrmsg(self.ecode));
+
+    return error;
+}
+
+- (int)close {
+    int error = tctdbclose(tdb);
+    if (!error)
+        NSLog(@"tdb close error: %s\n", tctdberrmsg(self.ecode));
+
+    return error;
+}
 
 - (int)ecode {
     return tctdbecode(tdb);

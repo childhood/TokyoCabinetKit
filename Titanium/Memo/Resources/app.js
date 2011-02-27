@@ -92,5 +92,22 @@ win.add(table);
 
 mainWindow.open();
 
-var tc = require('com.valleyport.ti.tokyocabinet');
-Ti.API.info("module is => " + tc);
+var TC = require('com.valleyport.ti.tokyocabinet');
+Ti.API.debug("module is => " + TC);
+
+//Ti.API.info("call: " + TC.example());
+//Ti.API.info("prop: " + TC.exampleProp);
+
+var tdb = TC.createTableDB();
+Ti.API.info("tdb: " + tdb);
+
+tdb.open("memo.tct");
+Ti.API.info("opened");
+//tdb.close();
+
+//tdb = TC.createTableDB("memo.tct");
+//Ti.API.info("tdb: " + tdb);
+//tdb.close();
+//
+//tdb = TC.createTableDB("memo.tct", TC.TDBOWRITER, TC.TDBOCREAT);
+//Ti.API.info("tdb: " + tdb);

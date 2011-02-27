@@ -41,12 +41,17 @@ typedef enum {
 @property (nonatomic, readonly) uint64_t count;
 @property (nonatomic, readonly) uint64_t size;
 
++ (id)db;
 + (id)dbWithFile:(NSString *)file;
 + (id)dbWithFile:(NSString *)file mode:(int)mode;
 
+- (id)init;
 - (id)initWithFile:(NSString *)file;
 - (id)initWithFile:(NSString *)file mode:(int)mode;
 
+- (int)open:(NSString *)file;
+- (int)open:(NSString *)file mode:(int)mode;
+- (int)close;
 - (int)ecode;
 - (NSString *)errorMessage;
 - (NSString *)errorMessage:(int)ecode;
